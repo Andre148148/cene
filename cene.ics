@@ -1,0 +1,1074 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cene di famiglia//IT
+CALSCALE:GREGORIAN
+X-WR-CALNAME:Cene di famiglia
+X-WR-CALDESC:Menu delle cene col Bimby
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+BEGIN:VEVENT
+UID:cena-2026-10-01@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261001T193000
+DTEND:20261001T203000
+SUMMARY:🍽️ Bocconcini di pollo con crema di zucchine e riso basmati
+DESCRIPTION:Verdura nascosta: cipolle\, patate\, zucchine\nUltime zucchine
+  di stagione: la crema di zucchine si mescola al riso e sparisce. Tutto i
+ n 40 minuti. Dopo cena pulisci la zucca (250 g di polpa) e taglia 200 g d
+ i cimette di cavolfiore: in frigo in un contenitore per domani.\n\nBoccon
+ cini di pollo con crema di zucchine e riso basmati: riso basmati 300 g\, 
+ cipolle 50 g\, olio extravergine di oliva 45 g\, patate 100 g\, zucchine 
+ 450 g\, dado vegetale 1 cucchiaini\, sale fino q.b.\, pepe nero q.b.\, pe
+ tto di pollo 400 g\, curcuma 0\,5 cucchiaini\, farina 00 2 cucchiai\, par
+ migiano reggiano 30 g\, rosmarino 1 pz\n\nRicetta passo passo nell'app Ce
+ ne di famiglia. Porzione in più per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Bocconcini di pollo con crema di zucchine e riso basm
+ ati
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-02@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261002T193000
+DTEND:20261002T203000
+SUMMARY:🍽️ Mac and cheese arancione con zucca e cavolfiore (senza lat
+ tosio)
+DESCRIPTION:Verdura nascosta: cavolfiore\, zucca\nCon zucca e cavolfiore g
+ ià tagliati ieri sera: 40 minuti. Gratinatura solo se avanza tempo (+10 
+ min). Zucca e cavolfiore frullati nella salsa al formaggio senza lattosio
+ \, la pasta sembra solo 'al formaggio'.\n\nMac and cheese arancione con z
+ ucca e cavolfiore (senza lattosio): parmigiano reggiano 80 g\, emmental 1
+ 00 g\, zucca 250 g\, cavolfiore 200 g\, olio extravergine di oliva 20 g\,
+  latte senza lattosio 400 g\, noce moscata q.b.\, pasta corta 320 g\, sal
+ e fino q.b.\, pangrattato 2 cucchiai\n\nRicetta passo passo nell'app Cene
+  di famiglia. Porzione in più per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Mac and cheese arancione con zucca e cavolfiore (senz
+ a lattosio)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pizza-2026-10-03@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261003T193000
+DTEND:20261003T203000
+SUMMARY:🍕 Pizza
+DESCRIPTION:Sabato sera pizza.
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-04@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261004T193000
+DTEND:20261004T203000
+SUMMARY:🍽️ Gnocchi di zucca e farina di ceci al sugo di pomodoro e ca
+ rote
+DESCRIPTION:Verdura nascosta: carote\, cipolle\, zucca\nDomenica: al matti
+ no il sugo base arancione (2 boccali\, vedi la preparazione della domenic
+ a)\; nel pomeriggio gli gnocchi di zucca e farina di ceci (70 minuti). Do
+ po cena pela e taglia a cubotti 800 g di patate per domani e tienile in f
+ rigo coperte d'acqua fredda.\n\nGnocchi di zucca e farina di ceci al sugo
+  di pomodoro e carote: parmigiano reggiano 50 g\, zucca 600 g\, patate 40
+ 0 g\, farina di ceci 180 g\, farina 00 200 g\, uova 1 pz\, noce moscata 2
+  pizzichi\, carote 150 g\, cipolle 50 g\, olio extravergine di oliva 30 g
+ \, passata di pomodoro 500 g\, basilico 5 g\, sale fino 0\,5 cucchiaini\n
+ \nRicetta passo passo nell'app Cene di famiglia. Porzione in più per il 
+ pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Gnocchi di zucca e farina di ceci al sugo di pomodoro
+  e carote
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-05@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261005T193000
+DTEND:20261005T203000
+SUMMARY:🍽️ Frittata gusto pizza + Patate al forno con panatura di Par
+ migiano e rosmarino
+DESCRIPTION:Verdura nascosta: carote\, cipolle\, patate dolci\, zucca\nIl 
+ sugo pizza della frittata è la vaschetta da 550 g di sugo base di ieri (
+ in frigo). Patate pelate e tagliate ieri sera: scolale\, asciugale e info
+ rnale per prime\; intanto la frittata cuoce al Varoma e finisce sotto il 
+ grill accanto alle patate: 45 minuti. Dopo cena: impasta\, forma e impana
+  le polpettine di lenticchie per domani (circa 40 minuti)\, crude in frig
+ o.\n\nFrittata gusto pizza: parmigiano reggiano 45 g\, uova 9 pz\, latte 
+ senza lattosio 75 g\, patate dolci 200 g\, mozzarella senza lattosio 250 
+ g\, origano q.b.\, basilico 5 g\, sale fino q.b.\n\nPatate al forno con p
+ anatura di Parmigiano e rosmarino: patate 800 g\, parmigiano reggiano 20 
+ g\, pangrattato 20 g\, olio extravergine di oliva 30 g\, rosmarino 2 pz\,
+  sale fino 0\,5 cucchiaini\n\nRicetta passo passo nell'app Cene di famigl
+ ia. Porzione in più per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Frittata gusto pizza + Patate al forno con panatura d
+ i Parmigiano e rosmarino
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Frittata gusto pizza + Patate al forno con pa
+ natura di Parmigiano e rosmarino): nulla dal freezer\; stasera pela 800 g
+  di patate\, tagliale a cubotti di 1\,5-2 cm e tienile in frigo coperte d
+ 'acqua fredda per domani
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-06@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261006T193000
+DTEND:20261006T203000
+SUMMARY:🍽️ Spaghettini al sugo con polpettine di lenticchie
+DESCRIPTION:Verdura nascosta: carote\, cipolle\, sedano\, zucca\nLa vasche
+ tta da 870 g di sugo base è in frigo da domenica. Le polpettine le hai f
+ ormate e impanate ieri sera dopo cena (circa 40 minuti): stasera 20 minut
+ i di forno mentre cuociono gli spaghettini\, circa 30 minuti.\n\nSpaghett
+ ini al sugo con polpettine di lenticchie: cipolle 30 g\, sedano 60 g\, ca
+ rote 60 g\, olio extravergine di oliva 25 g\, lenticchie rosse decorticat
+ e 230 g\, concentrato di pomodoro 20 g\, sale fino q.b.\, pepe nero q.b.\
+ , uova 3 pz\, pangrattato 150 g\, panna senza lattosio 40 g\, spaghetti 3
+ 20 g\n\nRicetta passo passo nell'app Cene di famiglia. Porzione in più p
+ er il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Spaghettini al sugo con polpettine di lenticchie
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Spaghettini al sugo con polpettine di lenticc
+ hie): nulla dal freezer (il sugo base da 870 g è già in frigo da domeni
+ ca)\; dopo cena prepara e impana le polpettine di lenticchie per domani (
+ passi 1-4\, circa 40 minuti) e tienile crude in frigo\, coperte
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-07@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261007T193000
+DTEND:20261007T203000
+SUMMARY:🍽️ Involtini di sogliola al pesto di casa con riso verde
+DESCRIPTION:Verdura nascosta: cavolo romanesco\nMartedì sera: in frigo 15
+ 0 g di pesto di casa e i filetti di sogliola surgelati. Pesto con pinoli 
+ (frutta a guscio): ai bimbi solo se già provati (vale anche per il bimbo
+  di 3 anni)\, altrimenti involtini senza pesto e la loro porzione di riso
+  con la crema di romanesco prelevata prima del pesto.\n\nInvoltini di sog
+ liola al pesto di casa con riso verde: pesto alla genovese di casa 150 g\
+ , parmigiano reggiano 20 g\, sogliola filetti 550 g\, riso basmati 300 g\
+ , cavolo romanesco 400 g\, olio extravergine di oliva 10 g\, sale fino q.
+ b.\n\nRicetta passo passo nell'app Cene di famiglia. Porzione in più per
+  il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Involtini di sogliola al pesto di casa con riso verde
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Involtini di sogliola al pesto di casa con ri
+ so verde): pesto alla genovese di casa\, circa 150 g\; filetti di sogliol
+ a surgelati (550 g)\, in frigo su un piatto
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-08@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261008T193000
+DTEND:20261008T203000
+SUMMARY:🍽️ Gnocchi di patate al ragù di casa con verdure nascoste
+DESCRIPTION:Verdura nascosta: bietole\, cipolle\, finocchi\nMercoledì ser
+ a: ragù classico di casa (circa 600 g) e 200 g di bieta surgelata dal co
+ ngelatore al frigo. Bieta e finocchi frullati nel sugo\, gnocchi pronti i
+ n 30 minuti.\n\nGnocchi di patate al ragù di casa con verdure nascoste: 
+ ragù classico di casa 600 g\, parmigiano reggiano 40 g\, cipolle 30 g\, 
+ finocchi 200 g\, bieta surgelata 200 g\, olio extravergine di oliva 15 g\
+ , gnocchi di patate 1 kg\, sale fino q.b.\n\nRicetta passo passo nell'app
+  Cene di famiglia. Porzione in più per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Gnocchi di patate al ragù di casa con verdure nascos
+ te
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Gnocchi di patate al ragù di casa con verdur
+ e nascoste): ragù classico di casa\, circa 600 g\, e 200 g di bieta surg
+ elata
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-09@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261009T193000
+DTEND:20261009T203000
+SUMMARY:🍽️ Pasta con crema di cavolfiore e gamberi (senza lattosio)
+DESCRIPTION:Verdura nascosta: cavolfiore\, cipolle\nGiovedì sera: gamberi
+  (e\, se serve\, platessa) surgelati in frigo. Gamberi = crostacei: ai bi
+ mbi solo se li hanno già mangiati\, altrimenti per chi non li ha provati
+  solo platessa (70 g a testa\, sbriciolata nella sua pasta). Dopo cena sp
+ osta in frigo 1 vaschetta di sugo base (circa 600 g) per la pizza di doma
+ ni.\n\nPasta con crema di cavolfiore e gamberi (senza lattosio): aglio 1 
+ spicchi\, cipolle 150 g\, olio extravergine di oliva 70 g\, cavolfiore 40
+ 0 g\, dado vegetale 1 cucchiaini\, bevanda di avena 250 g\, limoni 1 pz\,
+  gamberi sgusciati 550 g\, pasta corta 320 g\, amido di mais 1 cucchiaini
+ \, prezzemolo q.b.\, platessa filetti 70 g\, sale fino q.b.\, pepe nero q
+ .b.\n\nRicetta passo passo nell'app Cene di famiglia. Porzione in più pe
+ r il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Pasta con crema di cavolfiore e gamberi (senza lattos
+ io)
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Pasta con crema di cavolfiore e gamberi (senz
+ a lattosio)): gamberi sgusciati surgelati (550 g) e\, se serve\, la plate
+ ssa (70 g per ogni bimbo che non ha mai mangiato gamberi): in frigo la se
+ ra prima
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pizza-2026-10-10@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261010T193000
+DTEND:20261010T203000
+SUMMARY:🍕 Pizza
+DESCRIPTION:Sabato sera pizza.
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-11@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261011T193000
+DTEND:20261011T203000
+SUMMARY:🍽️ Passatelli
+DESCRIPTION:Verdura nascosta: finocchi\, porri\, sedano rapa\nDomenica: al
+  mattino la purea di zucca (25 minuti al Varoma)\; la sera passatelli nel
+  brodo cremoso di porri\, sedano rapa e finocchi frullati (50 minuti).\n\
+ nPassatelli: parmigiano reggiano 200 g\, pangrattato 250 g\, uova 7 pz\, 
+ noce moscata 2 pizzichi\, limoni 1 pz\, porri 200 g\, sedano rapa 250 g\,
+  finocchi 150 g\, patate 150 g\, olio extravergine di oliva 20 g\, dado v
+ egetale 1 cucchiaini\, sale fino q.b.\, pepe nero q.b.\n\nRicetta passo p
+ asso nell'app Cene di famiglia. Porzione in più per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Passatelli
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-12@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261012T193000
+DTEND:20261012T203000
+SUMMARY:🍽️ Pasta al ragù bianco di pollo con verdure nascoste
+DESCRIPTION:Verdura nascosta: carote\, cipolle\, sedano\, zucca\nUsa 1 vas
+ chetta di purea di zucca di ieri (in frigo). 40 minuti. Dopo cena\, per d
+ omani: sbuccia e taglia a cubetti di 3 cm 600 g di zucca e 600 g di patat
+ e (patate coperte d'acqua fredda) e mettile in frigo\, insieme alla plate
+ ssa surgelata (e alle cimette di cavolfiore\, se surgelate).\n\nPasta al 
+ ragù bianco di pollo con verdure nascoste: petto di pollo 380 g\, cipoll
+ e 50 g\, carote 150 g\, sedano 50 g\, rosmarino 1 pz\, olio extravergine 
+ di oliva 30 g\, dado vegetale 1 cucchiaini\, latte senza lattosio 100 g\,
+  noce moscata 1 pizzichi\, pasta corta 320 g\, parmigiano reggiano 40 g\,
+  sale fino q.b.\n\nRicetta passo passo nell'app Cene di famiglia. Porzion
+ e in più per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Pasta al ragù bianco di pollo con verdure nascoste
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-13@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261013T193000
+DTEND:20261013T203000
+SUMMARY:🍽️ Nuggets di platessa (o sogliola) + Puré aromatico di zucc
+ a
+DESCRIPTION:Verdura nascosta: cavolfiore\, zucca\nLunedì sera dopo cena: 
+ sbuccia e taglia a cubetti di 3 cm 600 g di zucca e 600 g di patate (pata
+ te coperte d'acqua fredda)\, in frigo\; metti in frigo anche la platessa 
+ surgelata (e le cimette di cavolfiore\, se surgelate). Stasera: impasto d
+ ei nuggets nel Bimby (5 minuti)\, sciacqua il boccale e avvia subito il p
+ urè (32 minuti)\; intanto forma\, impana e inforna i nuggets: 45 minuti.
+ \n\nNuggets di platessa (o sogliola): pane 70 g\, sale fino q.b.\, plates
+ sa filetti 550 g\, formaggio spalmabile senza lattosio 50 g\, cavolfiore 
+ 200 g\, uova 2 pz\, pangrattato 120 g\, olio extravergine di oliva 30 g\n
+ \nPuré aromatico di zucca: patate 600 g\, zucca 600 g\, burro senza latt
+ osio 45 g\, sale fino q.b.\, salvia 3 pizzichi\, parmigiano reggiano 10 g
+ \n\nRicetta passo passo nell'app Cene di famiglia. Porzione in più per i
+ l pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Nuggets di platessa (o sogliola) + Puré aromatico di
+  zucca
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Nuggets di platessa (o sogliola) + Puré arom
+ atico di zucca): filetti di platessa o sogliola surgelati (550 g) e\, se 
+ le hai prese surgelate\, le cimette di cavolfiore (200 g): in frigo la se
+ ra prima
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-14@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261014T193000
+DTEND:20261014T203000
+SUMMARY:🍽️ Pasta risottata con crema di ceci\, rosmarino e zafferano
+DESCRIPTION:Verdura nascosta: carote\, zucca\nUsa la vaschetta 2 di purea 
+ di zucca (in congelatore da domenica: in frigo martedì sera). Ceci già 
+ lessati: 40 minuti.\n\nPasta risottata con crema di ceci\, rosmarino e za
+ fferano: ceci lessati 570 g\, carote 200 g\, rosmarino 1 pz\, olio extrav
+ ergine di oliva 30 g\, zafferano 1 pz\, sale fino q.b.\, pasta corta 320 
+ g\, parmigiano reggiano 40 g\n\nRicetta passo passo nell'app Cene di fami
+ glia. Porzione in più per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Pasta risottata con crema di ceci\, rosmarino e zaffe
+ rano
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Pasta risottata con crema di ceci\, rosmarino
+  e zafferano): 1 vaschetta di purea di zucca (200 g) dal congelatore: in 
+ frigo la sera prima
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-15@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261015T193000
+DTEND:20261015T203000
+SUMMARY:🍽️ Nasello al vapore con riso cremoso bianco
+DESCRIPTION:Verdura nascosta: topinambur\, verza\nMercoledì sera: filetti
+  di nasello surgelati in frigo. Una sola cottura (riso nel cestello\, ver
+ za\, topinambur e pesce nel Varoma): 40 minuti.\n\nNasello al vapore con 
+ riso cremoso bianco: parmigiano reggiano 40 g\, riso basmati 300 g\, verz
+ a 250 g\, topinambur 200 g\, nasello filetti 550 g\, olio extravergine di
+  oliva 30 g\, limoni 1 pz\, sale fino q.b.\n\nRicetta passo passo nell'ap
+ p Cene di famiglia. Porzione in più per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Nasello al vapore con riso cremoso bianco
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Nasello al vapore con riso cremoso bianco): f
+ iletti di nasello surgelati (550 g): in frigo la sera prima
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-16@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261016T193000
+DTEND:20261016T203000
+SUMMARY:🍽️ Vellutata di patate dolci\, lenticchie rosse e latte di co
+ cco
+DESCRIPTION:Verdura nascosta: patate dolci\, porri\nVellutata dolce di pat
+ ate dolci e lenticchie rosse con bulgur: 40 minuti\, niente da preparare 
+ il giorno prima. Latte di cocco: se i bimbi non l'hanno mai assaggiato\, 
+ faglielo provare prima a pranzo. Dopo cena sposta in frigo 1 vaschetta di
+  sugo base (circa 600 g) per la pizza di domani.\n\nVellutata di patate d
+ olci\, lenticchie rosse e latte di cocco: bulgur 300 g\, olio extravergin
+ e di oliva 30 g\, aglio 1 spicchi\, porri 150 g\, patate dolci 450 g\, le
+ nticchie rosse decorticate 190 g\, cumino 0\,5 cucchiaini\, dado vegetale
+  1 cucchiaini\, latte di cocco 400 g\, limoni q.b.\, sale fino q.b.\n\nRi
+ cetta passo passo nell'app Cene di famiglia. Porzione in più per il pran
+ zo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Vellutata di patate dolci\, lenticchie rosse e latte 
+ di cocco
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pizza-2026-10-17@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261017T193000
+DTEND:20261017T203000
+SUMMARY:🍕 Pizza
+DESCRIPTION:Sabato sera pizza.
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-18@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261018T193000
+DTEND:20261018T203000
+SUMMARY:🍽️ Zuppa di orzo e borlotti
+DESCRIPTION:Verdura nascosta: finocchi\, sedano rapa\nDomenica: al mattino
+  la crema di broccoli\, porri e spinaci (base della settimana: vaschette 
+ A e B in congelatore)\; la sera zuppa di orzo e borlotti con sedano rapa 
+ e finocchi frullati (55 minuti). Stasera\, dopo la zuppa: impasto dei nug
+ gets nel Bimby (10 minuti)\, in frigo coperto.\n\nZuppa di orzo e borlott
+ i: parmigiano reggiano 40 g\, cipolle 50 g\, aglio 1 spicchi\, sedano rap
+ a 220 g\, finocchi 200 g\, rosmarino 1 pz\, salvia 2 pz\, olio extravergi
+ ne di oliva 40 g\, fagioli borlotti lessati 560 g\, dado vegetale 1 cucch
+ iaini\, orzo perlato 250 g\, pepe nero q.b.\, sale fino q.b.\n\nRicetta p
+ asso passo nell'app Cene di famiglia. Porzione in più per il pranzo di d
+ omani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Zuppa di orzo e borlotti
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-19@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261019T193000
+DTEND:20261019T203000
+SUMMARY:🍽️ Nuggets di pollo + Purè di verdure
+DESCRIPTION:Verdura nascosta: carote\, cavolfiore\, topinambur\nL'impasto 
+ è già in frigo: avvia subito il purè nel Bimby (35 minuti)\; intanto f
+ orma e impana i nuggets (circa 30\, un po' più grandi) e infornali a 200
+ °C per 15-18 minuti: 45 minuti.\n\nNuggets di pollo: petto di pollo 400 
+ g\, cavolfiore 150 g\, carote 100 g\, pane in cassetta 100 g\, formaggio 
+ spalmabile senza lattosio 120 g\, latte senza lattosio 60 g\, uova 2 pz\,
+  pangrattato 260 g\, aglio in polvere 0\,5 cucchiaini\, sale fino q.b.\, 
+ olio extravergine di oliva 30 g\n\nPurè di verdure: cavolfiore 250 g\, t
+ opinambur 150 g\, patate 600 g\, latte senza lattosio 250 g\, burro senza
+  lattosio 30 g\, parmigiano reggiano 10 g\, sale fino q.b.\, noce moscata
+  1 pizzichi\n\nRicetta passo passo nell'app Cene di famiglia. Porzione in
+  più per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Nuggets di pollo + Purè di verdure
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-20@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261020T193000
+DTEND:20261020T203000
+SUMMARY:🍽️ Pasta al ragù di casa con crema arancione
+DESCRIPTION:Verdura nascosta: cipolle\, patate dolci\, sedano rapa\nLuned
+ ì sera: ragù classico di casa (circa 600 g) dal congelatore al frigo. C
+ rema di patate dolci e sedano rapa frullata nel ragù\, pasta corta in pe
+ ntola: 35 minuti.\n\nPasta al ragù di casa con crema arancione: ragù cl
+ assico di casa 600 g\, parmigiano reggiano 40 g\, cipolle 40 g\, olio ext
+ ravergine di oliva 20 g\, patate dolci 260 g\, sedano rapa 160 g\, pasta 
+ corta 320 g\, sale fino q.b.\n\nRicetta passo passo nell'app Cene di fami
+ glia. Porzione in più per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Pasta al ragù di casa con crema arancione
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Pasta al ragù di casa con crema arancione): 
+ ragù classico di casa\, circa 600 g
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-21@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261021T193000
+DTEND:20261021T203000
+SUMMARY:🍽️ Filetti di trota con purè verde di patate e broccoli
+DESCRIPTION:Verdura nascosta: broccoli\, porri\, spinaci\nMartedì sera: v
+ aschetta A di crema di broccoli e filetti di trota dal congelatore al fri
+ go. La crema diventa il purè verde: 40 minuti.\n\nFiletti di trota con p
+ urè verde di patate e broccoli: parmigiano reggiano 30 g\, olio extraver
+ gine di oliva 35 g\, aglio 1 spicchi\, patate 850 g\, trota filetti 550 g
+ \, limoni 1 pz\, pepe nero q.b.\, sale fino q.b.\n\nRicetta passo passo n
+ ell'app Cene di famiglia. Porzione in più per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Filetti di trota con purè verde di patate e broccoli
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Filetti di trota con purè verde di patate e 
+ broccoli): vaschetta A di crema di broccoli (circa 650 g) e filetti di tr
+ ota surgelati\, 550 g (se li usi surgelati)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-22@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261022T193000
+DTEND:20261022T203000
+SUMMARY:🍽️ Pasta e piselli
+DESCRIPTION:Verdura nascosta: broccoli\, cipolle\, porri\, spinaci\nMercol
+ edì sera: la vaschetta B di crema di broccoli dal congelatore al frigo\;
+  frullata con i piselli fa da condimento verde. 35 minuti.\n\nPasta e pis
+ elli: parmigiano reggiano 50 g\, olio extravergine di oliva 30 g\, cipoll
+ e 50 g\, piselli surgelati 500 g\, dado vegetale 0\,5 cucchiaini\, pasta 
+ corta 320 g\, prosciutto cotto 100 g\, pepe nero q.b.\, sale fino q.b.\n\
+ nRicetta passo passo nell'app Cene di famiglia. Porzione in più per il p
+ ranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Pasta e piselli
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Pasta e piselli): crema di broccoli e porri\,
+  vaschetta B (circa 850 g): dal congelatore al frigo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-23@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261023T193000
+DTEND:20261023T203000
+SUMMARY:🍽️ Filetti di branzino alla pizzaiola con cous cous
+DESCRIPTION:Verdura nascosta: cavolo cappuccio\, cipolle\, sedano rapa\nGi
+ ovedì sera: filetti di branzino surgelati in frigo. Pizzaiola con sedano
+  rapa e cavolo cappuccio frullati\; cous cous pronto in 5 minuti: 35 minu
+ ti.\n\nFiletti di branzino alla pizzaiola con cous cous: cipolle 50 g\, a
+ glio 0\,5 spicchi\, sedano rapa 250 g\, cavolo cappuccio 150 g\, olio ext
+ ravergine di oliva 55 g\, passata di pomodoro 400 g\, branzino filetti 55
+ 0 g\, cous cous 300 g\, origano 2 pizzichi\, basilico 5 g\, sale fino q.b
+ .\n\nRicetta passo passo nell'app Cene di famiglia. Porzione in più per 
+ il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Filetti di branzino alla pizzaiola con cous cous
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Filetti di branzino alla pizzaiola con cous c
+ ous): filetti di branzino surgelati\, 550 g (se li usi surgelati)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pizza-2026-10-24@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261024T193000
+DTEND:20261024T203000
+SUMMARY:🍕 Pizza
+DESCRIPTION:Sabato sera pizza.
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-25@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261025T193000
+DTEND:20261025T203000
+SUMMARY:🍽️ Farro al pesto di casa con crema di cannellini e broccoli
+DESCRIPTION:Verdura nascosta: broccoli\, cavolo nero\nSabato sera: 150 g d
+ i pesto di casa in frigo. Al mattino la besciamella di cavolfiore (base d
+ ella settimana): tutte e due le vaschette in congelatore. La sera farro a
+ l pesto con crema di cannellini\, broccoli e cavolo nero (40 minuti). Pes
+ to con pinoli: vedi nota del 7.\n\nFarro al pesto di casa con crema di ca
+ nnellini e broccoli: pesto alla genovese di casa 150 g\, parmigiano reggi
+ ano 40 g\, farro perlato 300 g\, broccoli 200 g\, cavolo nero 250 g\, fag
+ ioli cannellini lessati 570 g\, olio extravergine di oliva 10 g\, sale fi
+ no q.b.\n\nRicetta passo passo nell'app Cene di famiglia. Porzione in pi
+ ù per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Farro al pesto di casa con crema di cannellini e broc
+ coli
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Farro al pesto di casa con crema di cannellin
+ i e broccoli): pesto alla genovese di casa\, circa 150 g
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-26@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261026T193000
+DTEND:20261026T203000
+SUMMARY:🍽️ Risotto salmone e finocchio
+DESCRIPTION:Verdura nascosta: finocchi\, porri\, sedano rapa\nDomenica ser
+ a: salmone surgelato in frigo (o fresco\, controlla le lische). Risotto c
+ on finocchi\, porri e sedano rapa frullati: 35 minuti. Dopo cena sposta i
+ n frigo il macinato di pollo (congelato il giorno della spesa) per domani
+ .\n\nRisotto salmone e finocchio: parmigiano reggiano 40 g\, scalogno 50 
+ g\, finocchi 200 g\, porri 100 g\, sedano rapa 100 g\, olio extravergine 
+ di oliva 30 g\, riso carnaroli 320 g\, limoni 1 pz\, dado vegetale 1 cucc
+ hiaini\, sale fino q.b.\, salmone filetto 550 g\, burro senza lattosio 30
+  g\, aneto q.b.\, pepe nero q.b.\n\nRicetta passo passo nell'app Cene di 
+ famiglia. Porzione in più per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Risotto salmone e finocchio
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Risotto salmone e finocchio): filetto di salm
+ one surgelato (550 g)\, se non lo compri fresco
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-27@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261027T193000
+DTEND:20261027T203000
+SUMMARY:🍽️ Polenta con ragù di pollo e verdure nascoste
+DESCRIPTION:Verdura nascosta: cavolo cappuccio\, finocchi\, verza\nRagù d
+ i pollo con finocchio\, cavolo cappuccio e verza tritati finissimi\, su p
+ olenta cremosa: 40-45 minuti. Dopo cena sposta la vaschetta 1 della besci
+ amella al cavolfiore dal congelatore al frigo per le uova di domani.\n\nP
+ olenta con ragù di pollo e verdure nascoste: parmigiano reggiano 40 g\, 
+ finocchi 150 g\, cavolo cappuccio 150 g\, verza 100 g\, olio extravergine
+  di oliva 30 g\, macinato di pollo 400 g\, concentrato di pomodoro 20 g\,
+  passata di pomodoro 200 g\, dado vegetale 0\,5 cucchiaini\, latte senza 
+ lattosio 400 g\, polenta istantanea 300 g\, burro senza lattosio 30 g\, s
+ ale fino q.b.\, pepe nero q.b.\n\nRicetta passo passo nell'app Cene di fa
+ miglia. Porzione in più per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Polenta con ragù di pollo e verdure nascoste
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Polenta con ragù di pollo e verdure nascoste
+ ): macinato di pollo (400 g)\, se congelato il giorno della spesa: in fri
+ go la sera prima
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-28@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261028T193000
+DTEND:20261028T203000
+SUMMARY:🍽️ Uova con purea profumata
+DESCRIPTION:Verdura nascosta: cavolfiore\nUova gratinate sulla vaschetta 1
+  di besciamella di cavolfiore (in frigo da martedì sera)\, con la purea 
+ di patate: 45 minuti. Dopo cena sposta la vaschetta 2 della besciamella d
+ al congelatore al frigo per l'orzo di domani.\n\nUova con purea profumata
+ : uova 8 pz\, patate 760 g\, parmigiano reggiano 30 g\, olio extravergine
+  di oliva 10 g\, noce moscata 1 pizzichi\, basilico 5 g\, sale fino q.b.\
+ , pepe nero q.b.\n\nRicetta passo passo nell'app Cene di famiglia. Porzio
+ ne in più per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Uova con purea profumata
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Uova con purea profumata): besciamella al cav
+ olfiore\, vaschetta 1 (circa 800 g): dal congelatore al frigo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-29@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261029T193000
+DTEND:20261029T203000
+SUMMARY:🍽️ Orzo cremoso ai ceci e cavolfiore
+DESCRIPTION:Verdura nascosta: cavolfiore\, scalogno\nMercoledì sera: la v
+ aschetta 2 di besciamella dal congelatore al frigo\; con i ceci diventa l
+ a crema che manteca l'orzo (metti subito l'orzo sul fuoco): 40 minuti. Do
+ po cena pela e taglia a cubetti di 2-3 cm 500 g di patate e 500 g di pata
+ te dolci e a rondelle 200 g di carote\; tienili in frigo coperti d'acqua 
+ fredda per il purè di domani. Metti in frigo anche nasello e gamberi sur
+ gelati.\n\nOrzo cremoso ai ceci e cavolfiore: scalogno 30 g\, aglio 1 spi
+ cchi\, olio extravergine di oliva 20 g\, ceci lessati 570 g\, dado vegeta
+ le 1 cucchiaini\, parmigiano reggiano 40 g\, orzo perlato 300 g\, sale fi
+ no q.b.\, pepe bianco q.b.\n\nRicetta passo passo nell'app Cene di famigl
+ ia. Porzione in più per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Orzo cremoso ai ceci e cavolfiore
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Orzo cremoso ai ceci e cavolfiore): besciamel
+ la al cavolfiore di domenica\, vaschetta 2 (circa 800 g): dal congelatore
+  al frigo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cena-2026-10-30@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261030T193000
+DTEND:20261030T203000
+SUMMARY:🍽️ Burger di nasello e gamberi + Purè di patate e carote al 
+ rosmarino
+DESCRIPTION:Verdura nascosta: carote\, patate dolci\, porri\nGiovedì sera
+ : nasello e gamberi surgelati in frigo (se un bimbo non ha mai mangiato g
+ amberi\, mini-burger di solo nasello: passo 2 della ricetta). Verdure del
+  purè già tagliate da ieri. Prima l'impasto dei burger al Bimby (5 min)
+ \, sciacqua il boccale e avvia il purè al Varoma (30 min)\; intanto cuoc
+ i i burger in forno a 200°C per 15 minuti su un'unica teglia: 45 minuti.
+ \n\nBurger di nasello e gamberi: cipolle 75 g\, pane 75 g\, aglio 1 spicc
+ hi\, latte senza lattosio 60 g\, nasello filetti 450 g\, gamberi sgusciat
+ i 150 g\, carote 150 g\, porri 100 g\, pangrattato 30 g\, sale fino q.b.\
+ , olio extravergine di oliva 30 g\, pepe nero q.b.\n\nPurè di patate e c
+ arote al rosmarino: carote 200 g\, patate dolci 500 g\, patate 500 g\, sa
+ le fino q.b.\, rosmarino secco in polvere 2 pizzichi\, olio extravergine 
+ di oliva 30 g\, pepe nero q.b.\n\nRicetta passo passo nell'app Cene di fa
+ miglia. Porzione in più per il pranzo di domani.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT9H30M
+DESCRIPTION:Stasera: Burger di nasello e gamberi + Purè di patate e carot
+ e al rosmarino
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT23H
+DESCRIPTION:Per domani sera (Burger di nasello e gamberi + Purè di patate
+  e carote al rosmarino): filetti di nasello (450 g) e gamberi sgusciati (
+ 150 g) surgelati: in frigo la sera prima
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:pizza-2026-10-31@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261031T193000
+DTEND:20261031T203000
+SUMMARY:🍕 Pizza
+DESCRIPTION:Sabato sera pizza.
+END:VEVENT
+BEGIN:VEVENT
+UID:prep-2026-10-04@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261004T100000
+DTEND:20261004T113000
+SUMMARY:🥣 Preparazione: Sugo base arancione (pomodoro\, zucca e carote)
+DESCRIPTION:Al mattino 2 boccali di salsa di fila (circa 40 minuti l'uno\,
+  quasi senza sorveglianza)\, frullata liscia e senza sale: circa 2\,6 kg.
+  Dividi in 4 vaschette con etichetta e data: 550 g in frigo per la fritta
+ ta gusto pizza di lunedì 5\, 870 g in frigo per gli spaghettini di marte
+ dì 6\, 2 da circa 600 g in congelatore per le pizze di sabato 10 e 17 (i
+ n frigo il venerdì sera). In frigo si conserva 3 giorni.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT30M
+DESCRIPTION:Oggi preparazione: Sugo base arancione (pomodoro\, zucca e car
+ ote)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prep-2026-10-11@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261011T100000
+DTEND:20261011T113000
+SUMMARY:🥣 Preparazione: Scorta di purea di zucca
+DESCRIPTION:1 kg di polpa di zucca al Varoma per 25 minuti\, frullata con 
+ pochissima acqua di cottura\, senza sale. 5 vaschette da 200 g: 1 in frig
+ o per lunedì 12 (pasta al ragù bianco)\, 1 in congelatore per mercoled
+ ì 14 (pasta risottata ai ceci\, in frigo martedì sera)\; le altre 3 res
+ tano in congelatore come jolly per il sugo delle pizze del sabato o per n
+ ovembre.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT30M
+DESCRIPTION:Oggi preparazione: Scorta di purea di zucca
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prep-2026-10-18@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261018T100000
+DTEND:20261018T113000
+SUMMARY:🥣 Preparazione: Crema di broccoli e porri (con spinaci)
+DESCRIPTION:Broccoli\, porri e spinaci cotti e frullati lisci in una crema
+  verde (circa 1\,2 kg di verdura). 2 vaschette\, entrambe in congelatore:
+  A (circa 650 g) per il purè verde della trota di mercoledì 21\, in fri
+ go martedì sera\; B (circa 850 g) per la pasta e piselli di giovedì 22\
+ , in frigo mercoledì sera.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT30M
+DESCRIPTION:Oggi preparazione: Crema di broccoli e porri (con spinaci)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:prep-2026-10-25@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261025T100000
+DTEND:20261025T113000
+SUMMARY:🥣 Preparazione: Besciamella al cavolfiore senza lattosio
+DESCRIPTION:Al mattino (circa 55 minuti) 800 g di cimette di cavolfiore al
+  Varoma\, poi frullate e addensate con 700 g di latte e 50 g di burro sen
+ za lattosio\, 60 g di farina e 40 g di Parmigiano\, senza sale: circa 1\,
+ 6 kg. 2 vaschette da circa 800 g (400 g di cavolfiore ciascuna)\, entramb
+ e in congelatore: la 1 per le uova gratinate di mercoledì 28 (in frigo m
+ artedì 27 sera)\, la 2 per l'orzo cremoso ai ceci e cavolfiore di gioved
+ ì 29 (in frigo mercoledì 28 sera).
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT30M
+DESCRIPTION:Oggi preparazione: Besciamella al cavolfiore senza lattosio
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:spesa-S1-2026-10@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20260930T090000
+DTEND:20260930T100000
+SUMMARY:🛒 Spesa (S1)
+DESCRIPTION:🛒 Spesa S1 · cene dal 1 al 3 ottobre\n\nDa comprare\n— F
+ rutta e verdura\n▫️ cavolfiore: 200 g (cimette: 1 cavolfiore piccolo 
+ o 200 g di cimette surgelate)\n▫️ cipolle: 50 g\n▫️ patate: 100 g
+ \n▫️ rosmarino: 1 pz (rametto\, facoltativo\, solo nei piatti degli a
+ dulti)\n▫️ zucca: 250 g (peso della polpa pulita: compra circa il 40%
+  in più di zucca intera)\n▫️ zucchine: 450 g (le ultime di stagione\
+ ; peso pelate: compra circa 520 g e sbucciale)\n— Carne\n▫️ petto d
+ i pollo: 400 g (a bocconcini)\n— Latticini e uova\n▫️ emmental: 100
+  g (stagionato\, con "naturalmente privo di lattosio" in etichetta (es. E
+ mmentaler DOP))\n▫️ latte senza lattosio: 400 g\n▫️ parmigiano re
+ ggiano: 110 g (per mantecare)\n— Pane\, pasta e cereali\n▫️ pasta c
+ orta: 320 g (ditalini: formato piccolo\, comodo per il bimbo di 1 anno)\n
+ ▫️ riso basmati: 300 g\n\nControlla in dispensa\n— Dispensa\n▫️
+  farina 00: 2 cucchiai\n▫️ olio extravergine di oliva: 65 g\n▫️ p
+ angrattato: 2 cucchiai (facoltativo\, per gratinare)\n— Spezie e condim
+ enti\n▫️ curcuma: 0\,5 cucchiaini (al posto della paprika)\n▫️ da
+ do vegetale: 1 cucchiaini (senza sale aggiunto (non il dado Bimby classic
+ o))\n▫️ noce moscata: q.b. (1 pizzico)\n▫️ pepe nero: q.b. (solo 
+ adulti)\n▫️ sale fino: q.b. (solo adulti\, nel piatto)
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT0M
+DESCRIPTION:Oggi spesa: la lista è nell'evento e nell'app
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:spesa-S2-2026-10@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261003T090000
+DTEND:20261003T100000
+SUMMARY:🛒 Spesa (S2)
+DESCRIPTION:🛒 Spesa S2 · cene dal 4 al 10 ottobre\n\nDa comprare\n— 
+ Frutta e verdura\n▫️ aglio: 1 spicchi\n▫️ basilico: 15 g (4 fogli
+ e)\n▫️ carote: 610 g\n▫️ cavolfiore: 400 g (peso delle cimette: c
+ ompra 1 cavolfiore da circa 700 g)\n▫️ cavolo romanesco: 400 g (peso 
+ delle cimette (1 cavolo da circa 800 g))\n▫️ cipolle: 460 g\n▫️ f
+ inocchi: 200 g (peso pulito)\n▫️ limoni: 1 pz (10 g di succo)\n▫️
+  patate: 1\,2 kg (a pasta farinosa)\n▫️ patate dolci: 200 g (peso sbu
+ cciate\, frullate nell'impasto)\n▫️ prezzemolo: q.b. (solo adulti)\n
+ ▫️ rosmarino: 2 pz (rametti\, solo sulle patate degli adulti)\n▫️
+  sedano: 60 g\n▫️ zucca: 1\,2 kg (peso della polpa pulita: compra cir
+ ca il 40% in più di zucca intera)\n— Latticini e uova\n▫️ bevanda 
+ di avena: 250 g\n▫️ latte senza lattosio: 75 g\n▫️ mozzarella sen
+ za lattosio: 250 g\n▫️ panna senza lattosio: 40 g (facoltativa)\n▫
+ ️ parmigiano reggiano: 180 g\n▫️ uova: 13 pz (1 nell'impasto\, 2 pe
+ r la panatura)\n— Pane\, pasta e cereali\n▫️ gnocchi di patate: 1 k
+ g (freschi\, 1 kg (o 2 confezioni da 500 g))\n▫️ pasta corta: 320 g\n
+ ▫️ riso basmati: 300 g\n▫️ spaghetti: 320 g (spaghettini)\n— Di
+ spensa\n▫️ farina di ceci: 180 g\n▫️ lenticchie rosse decorticate
+ : 230 g (secche)\n▫️ passata di pomodoro: 500 g\n▫️ polpa di pomo
+ doro: 1\,6 kg (4 scatole da 400 g)\n— Surgelati\n▫️ bieta surgelata
+ : 200 g (foglie a cubetti\; in frigo mercoledì sera con il ragù)\n\nPes
+ ce/carne freschi a metà settimana (o surgelati)\n— Pesce\n▫️ gambe
+ ri sgusciati: 550 g (crudi\, anche surgelati)\n▫️ platessa filetti: 7
+ 0 g (anche surgelata: 1 filetto da 70-80 g (2 se nessuno dei bimbi ha pro
+ vato i gamberi)\; non comprarla se li hanno già mangiati)\n▫️ soglio
+ la filetti: 550 g (anche surgelato)\n\nControlla in dispensa\n— Dispens
+ a\n▫️ amido di mais: 1 cucchiaini\n▫️ concentrato di pomodoro: 20
+  g (1 tubetto basta per tutto il mese)\n▫️ farina 00: 200 g (150 nell
+ 'impasto\, il resto per la spianatoia)\n▫️ olio extravergine di oliva
+ : 260 g (15 g nel trito + 10 g per ungere la teglia)\n▫️ pangrattato:
+  170 g (75 g nell'impasto + 75 g per la panatura)\n— Spezie e condiment
+ i\n▫️ dado vegetale: 1 cucchiaini (senza sale: granulare senza sale a
+ ggiunto o fatto in casa senza sale\, 1 cucchiaino raso)\n▫️ noce mosc
+ ata: 2 pizzichi\n▫️ origano: q.b. (secco\, solo sugli spicchi degli a
+ dulti)\n▫️ pepe nero: q.b. (solo adulti\, nel piatto)\n▫️ sale fi
+ no: 1 cucchiaini (solo nel sugo degli adulti\, dopo aver prelevato quello
+  dei bimbi)\n▫️ sale fino: q.b. (solo adulti)
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT0M
+DESCRIPTION:Oggi spesa: la lista è nell'evento e nell'app
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:spesa-S3-2026-10@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261010T090000
+DTEND:20261010T100000
+SUMMARY:🛒 Spesa (S3)
+DESCRIPTION:🛒 Spesa S3 · cene dal 11 al 17 ottobre\n\nDa comprare\n—
+  Frutta e verdura\n▫️ aglio: 1 spicchi\n▫️ carote: 350 g\n▫️ 
+ cavolfiore: 200 g (200 g di cimette crude: 1/4 di cavolfiore\, oppure una
+  busta di cimette surgelate (in frigo lunedì sera\, poi asciugale bene))
+ \n▫️ cipolle: 50 g\n▫️ finocchi: 150 g (circa ½ finocchio)\n▫
+ ️ limoni: 1 pz (1 limone basta per tutta la settimana: scorza di ½ dom
+ enica (facoltativa)\, scorza per gli adulti giovedì\, qualche goccia ven
+ erdì)\n▫️ limoni: q.b. (lo stesso limone di giovedì\, facoltativo\,
+  solo per gli adulti (va bene anche 1 lime))\n▫️ patate: 750 g (a pas
+ ta farinosa)\n▫️ patate dolci: 450 g (peso pulito (circa 2 patate dol
+ ci medie))\n▫️ porri: 350 g (parte bianca e verde chiaro)\n▫️ ros
+ marino: 2 pz (facoltativo\, solo adulti: qualche ago tritato fresco sul p
+ iatto)\n▫️ sedano: 50 g\n▫️ sedano rapa: 250 g (peso pulito: comp
+ ra circa il 35% in più (buccia spessa))\n▫️ topinambur: 200 g (peso 
+ pelato: comprane circa 250 g)\n▫️ verza: 250 g (solo foglie interne c
+ hiare\, senza costa: compra mezza verza piccola (le foglie esterne scure 
+ non servono))\n▫️ zucca: 1\,6 kg (peso della polpa pulita: compra cir
+ ca il 40% in più di zucca intera)\n— Carne\n▫️ petto di pollo: 380
+  g (intero: lo trita il Bimby lunedì (passo 2)\; il macinato fresco non 
+ regge 2 giorni. Scegli una confezione che scada da lunedì 12 in poi)\n
+ — Latticini e uova\n▫️ burro senza lattosio: 45 g (oppure 30 g di o
+ lio extravergine)\n▫️ formaggio spalmabile senza lattosio: 50 g\n▫
+ ️ latte senza lattosio: 100 g\n▫️ parmigiano reggiano: 330 g (a pez
+ zi\, stagionato)\n▫️ uova: 9 pz (7 per l'impasto dei passatelli di do
+ menica (altre 2 servono per la panatura dei nuggets di martedì))\n— Pa
+ ne\, pasta e cereali\n▫️ bulgur: 300 g (medio o fine)\n▫️ pane: 7
+ 0 g (raffermo\, oppure in cassetta senza latte (leggi l'etichetta))\n▫
+ ️ pasta corta: 640 g (cotta in pentola in acqua senza sale)\n▫️ ris
+ o basmati: 300 g\n— Dispensa\n▫️ ceci lessati: 570 g (peso sgocciol
+ ato\, circa 2 lattine e mezzo: per esempio 2 lattine da 400 g più 1 latt
+ ina piccola)\n▫️ latte di cocco: 400 g (1 lattina da cucina (non la b
+ evanda)\, vegetale e senza lattosio\; va bene anche light: 300 g nella cr
+ ema\, 100 g per la spirale nelle ciotole degli adulti)\n▫️ lenticchie
+  rosse decorticate: 190 g (secche\, niente ammollo)\n▫️ pangrattato: 
+ 370 g (fine\, 1 confezione da 500 g (serve anche per i nuggets di marted
+ ì)\; tienine 2-3 cucchiai in più per correggere l'impasto)\n\nPesce/car
+ ne freschi a metà settimana (o surgelati)\n— Pesce\n▫️ nasello fil
+ etti: 550 g (anche surgelato: compralo surgelato (si usa 5 giorni dopo la
+  spesa del sabato))\n▫️ platessa filetti: 550 g (o sogliola\; anche s
+ urgelata (si usa 3 giorni dopo la spesa))\n\nControlla in dispensa\n— D
+ ispensa\n▫️ olio extravergine di oliva: 170 g (per il forno: 15 g sul
+ la teglia + 15 g sopra i nuggets)\n— Spezie e condimenti\n▫️ cumino
+ : 0\,5 cucchiaini (in polvere)\n▫️ dado vegetale: 3 cucchiaini (senza
+  sale aggiunto (fatto in casa))\n▫️ noce moscata: 3 pizzichi\n▫️ 
+ pepe nero: q.b. (solo adulti\, nel piatto)\n▫️ sale fino: q.b. (solo 
+ nei piatti degli adulti\, dopo aver servito i bimbi)\n▫️ salvia: 3 pi
+ zzichi (secca\, solo nel purè degli adulti)\n▫️ zafferano: 1 pz (bus
+ tina)
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT0M
+DESCRIPTION:Oggi spesa: la lista è nell'evento e nell'app
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:spesa-S4-2026-10@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261017T090000
+DTEND:20261017T100000
+SUMMARY:🛒 Spesa (S4)
+DESCRIPTION:🛒 Spesa S4 · cene dal 18 al 24 ottobre\n\nDa comprare\n—
+  Frutta e verdura\n▫️ aglio: 3\,5 spicchi (facoltativo)\n▫️ basil
+ ico: 5 g (solo adulti\, sul piatto)\n▫️ broccoli: 750 g (peso di cime
+ tte e gambi pelati: compra circa 1\,1 kg di broccoli interi (3 broccoli))
+ \n▫️ carote: 100 g\n▫️ cavolfiore: 400 g (cimette crude)\n▫️ 
+ cavolo cappuccio: 150 g (bianco\, senza torsolo)\n▫️ cipolle: 190 g\n
+ ▫️ finocchi: 200 g (peso pulito\, circa 1 finocchio piccolo)\n▫️ 
+ limoni: 1 pz (solo adulti\, facoltativo)\n▫️ patate: 1\,45 kg (a past
+ a farinosa)\n▫️ patate dolci: 260 g (peso pelato: compra circa 320 g)
+ \n▫️ porri: 300 g (peso pulito\, parte bianca e verde chiaro: circa 2
+ -3 porri)\n▫️ rosmarino: 1 pz (rametto\, solo per insaporire)\n▫️
+  salvia: 2 pz (foglie\, solo per insaporire)\n▫️ sedano rapa: 630 g (
+ peso pulito: compra circa il 35% in più (buccia spessa))\n▫️ spinaci
+ : 150 g (freschi\, già lavati (oppure 150 g surgelati))\n▫️ topinamb
+ ur: 150 g (peso pelato: comprane circa 200 g)\n— Carne\n▫️ petto di
+  pollo: 400 g\n— Latticini e uova\n▫️ burro senza lattosio: 30 g\n
+ ▫️ formaggio spalmabile senza lattosio: 120 g\n▫️ latte senza lat
+ tosio: 310 g\n▫️ parmigiano reggiano: 170 g (per servire)\n▫️ pro
+ sciutto cotto: 100 g (a cubetti\, senza polifosfati (banco frigo)\; solo 
+ adulti)\n▫️ uova: 2 pz (per la panatura)\n— Pane\, pasta e cereali\
+ n▫️ cous cous: 300 g\n▫️ orzo perlato: 250 g\n▫️ pane in cass
+ etta: 100 g (4 fette\, senza latte (leggi l'etichetta))\n▫️ pasta cor
+ ta: 640 g (mezze penne\, fusilli o conchiglie)\n— Dispensa\n▫️ fagi
+ oli borlotti lessati: 560 g (280 g frullati nella base + 280 g interi\; p
+ eso sgocciolato e sciacquati (circa 2 barattoli e mezzo da 400 g)\, oppur
+ e 190 g secchi lessati senza sale)\n▫️ passata di pomodoro: 400 g\n
+ — Surgelati\n▫️ piselli surgelati: 500 g (non serve scongelarli)\n\
+ nPesce/carne freschi a metà settimana (o surgelati)\n— Pesce\n▫️ b
+ ranzino filetti: 550 g (anche surgelati\; chiedi filetti spinati)\n▫️
+  trota filetti: 550 g (anche surgelati\; con la pelle\, trota iridea o sa
+ lmonata)\n\nControlla in dispensa\n— Dispensa\n▫️ olio extravergine
+  di oliva: 250 g (30 g in cottura + filo a crudo)\n▫️ pangrattato: 26
+ 0 g (200 g panatura + 40 g impasto + 20 g se l'impasto resta molle)\n— 
+ Spezie e condimenti\n▫️ aglio in polvere: 0\,5 cucchiaini (facoltativ
+ o)\n▫️ dado vegetale: 2\,5 cucchiaini (senza sale\, raso)\n▫️ noc
+ e moscata: 1 pizzichi\n▫️ origano: 2 pizzichi (solo adulti)\n▫️ p
+ epe nero: q.b. (solo adulti)\n▫️ sale fino: q.b. (solo adulti\, dopo 
+ aver prelevato le porzioni dei bimbi)
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT0M
+DESCRIPTION:Oggi spesa: la lista è nell'evento e nell'app
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:spesa-S5-2026-10@cene-di-famiglia
+DTSTAMP:20260930T143537Z
+DTSTART:20261024T090000
+DTEND:20261024T100000
+SUMMARY:🛒 Spesa (S5)
+DESCRIPTION:🛒 Spesa S5 · cene dal 25 al 31 ottobre\n\nDa comprare\n—
+  Frutta e verdura\n▫️ aglio: 2 spicchi\n▫️ broccoli: 200 g (peso 
+ delle cimette (circa 1 broccolo piccolo da 350 g))\n▫️ carote: 350 g\
+ n▫️ cavolfiore: 800 g (peso delle cimette: circa 1 cavolfiore grande 
+ da 1\,3 kg o 2 piccoli)\n▫️ cavolo cappuccio: 150 g (bianco\, circa 
+ ¼ di cavolo piccolo)\n▫️ cavolo nero: 250 g (peso delle foglie senza
+  costa (circa 1 mazzo da 400 g))\n▫️ cipolle: 75 g\n▫️ finocchi: 
+ 350 g (peso pulito (un finocchio medio pulito pesa circa 200 g))\n▫️ 
+ limoni: 1 pz (scorza e un cucchiaio di succo)\n▫️ patate: 1\,26 kg (f
+ arinose\, da purè)\n▫️ patate dolci: 500 g\n▫️ porri: 200 g (sol
+ o parte bianca)\n▫️ scalogno: 80 g\n▫️ sedano rapa: 100 g (peso p
+ ulito: compra circa il 35% in più (buccia spessa))\n▫️ verza: 100 g 
+ (foglie interne senza costa)\n— Pesce\n▫️ salmone filetto: 550 g (s
+ enza pelle e lische\; compralo surgelato (si usa 2 giorni dopo la spesa))
+ \n— Latticini e uova\n▫️ burro senza lattosio: 110 g\n▫️ latte 
+ senza lattosio: 1\,16 kg\n▫️ parmigiano reggiano: 230 g\n▫️ uova:
+  8 pz\n— Pane\, pasta e cereali\n▫️ farro perlato: 300 g\n▫️ or
+ zo perlato: 300 g (lessato in pentola)\n▫️ pane: 75 g (per l'impasto)
+ \n▫️ polenta istantanea: 300 g\n▫️ riso carnaroli: 320 g\n— Dis
+ pensa\n▫️ ceci lessati: 570 g (peso sgocciolato e sciacquati (circa 2
+  barattoli e mezzo da 400 g)\, oppure 190 g secchi lessati senza sale)\n
+ ▫️ concentrato di pomodoro: 20 g\n▫️ fagioli cannellini lessati: 
+ 570 g (peso sgocciolato e sciacquati (circa 2 barattoli e mezzo da 400 g)
+ \, oppure 190 g secchi lessati senza sale)\n▫️ passata di pomodoro: 2
+ 00 g\n\nPesce/carne freschi a metà settimana (o surgelati)\n— Carne\n
+ ▫️ macinato di pollo: 400 g (o di tacchino\; comprato sabato\, congel
+ alo subito (o compralo fresco lunedì o martedì))\n— Pesce\n▫️ gam
+ beri sgusciati: 150 g (crudi sgusciati\, anche surgelati: comprali surgel
+ ati (si usano 6 giorni dopo la spesa))\n▫️ nasello filetti: 450 g (an
+ che surgelato: compralo surgelato (si usa 6 giorni dopo la spesa) oppure 
+ fresco giovedì 29\; controlla le lische)\n\nControlla in dispensa\n— F
+ rutta e verdura\n▫️ aneto: q.b. (facoltativo\, solo adulti)\n▫️ b
+ asilico: 5 g (facoltativo\, solo sui piatti degli adulti)\n— Pane\, pas
+ ta e cereali\n▫️ farina 00: 60 g\n— Dispensa\n▫️ olio extraverg
+ ine di oliva: 160 g (20 g soffritto + 10 g per il salmone)\n▫️ pangra
+ ttato: 30 g\n— Spezie e condimenti\n▫️ dado vegetale: 2\,5 cucchiai
+ ni (senza sale)\n▫️ noce moscata: 3 pizzichi\n▫️ pepe bianco: q.b
+ . (solo adulti)\n▫️ pepe nero: q.b. (solo adulti)\n▫️ rosmarino s
+ ecco in polvere: 2 pizzichi\n▫️ sale fino: q.b. (solo adulti\, se ser
+ ve)
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT0M
+DESCRIPTION:Oggi spesa: la lista è nell'evento e nell'app
+END:VALARM
+END:VEVENT
+END:VCALENDAR

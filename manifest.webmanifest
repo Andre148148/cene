@@ -1,0 +1,23 @@
+{
+ "name": "Cene di famiglia",
+ "short_name": "Cene",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#faf6ef",
+ "theme_color": "#c9571f",
+ "lang": "it",
+ "icons": [
+  {
+   "src": "icona-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icona-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any maskable"
+  }
+ ]
+}

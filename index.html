@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Cene">
+  <meta name="color-scheme" content="light dark">
+  <title>Cene di famiglia</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>🎃</text></svg>">
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icona-180.png">
+  <meta name="theme-color" content="#c9571f">
+</head>
+<body>
+  <header class="testata">
+    <div class="marchio">
+      <span class="logo" aria-hidden="true">🎃</span>
+      <div>
+        <h1>Cene di famiglia</h1>
+        <p id="sottotitolo" class="sottotitolo"></p>
+      </div>
+    </div>
+    <div class="testata-dx">
+      <label class="mese-sel" id="mese-sel-wrap" hidden>
+        <span class="sr">Mese</span>
+        <select id="mese-sel"></select>
+      </label>
+      <span id="modo" class="modo" title=""></span>
+    </div>
+  </header>
+
+  <nav class="schede" id="schede" aria-label="Sezioni">
+    <button type="button" data-vista="oggi">🍽️ <span>Stasera</span></button>
+    <button type="button" data-vista="calendario">📅 <span>Calendario</span></button>
+    <button type="button" data-vista="spesa">🛒 <span>Spesa</span></button>
+    <button type="button" data-vista="equilibrio">⚖️ <span>Equilibrio</span></button>
+    <button type="button" data-vista="ricette">📖 <span>Ricette</span></button>
+    <button type="button" data-vista="info">⚙️ <span>Info</span></button>
+  </nav>
+
+  <main id="vista" class="vista" tabindex="-1"></main>
+
+  <div id="modale" class="modale" hidden>
+    <div class="modale-sfondo" data-azione="chiudi-modale"></div>
+    <div class="modale-box" role="dialog" aria-modal="true" aria-labelledby="modale-titolo">
+      <button type="button" class="modale-chiudi" data-azione="chiudi-modale" aria-label="Chiudi">✕</button>
+      <div id="modale-corpo"></div>
+    </div>
+  </div>
+
+  <aside id="cucina" class="cucina" hidden aria-label="Cucina passo passo">
+    <div class="cucina-testa">
+      <div class="cucina-titolo"><span class="etichetta">👩‍🍳 Cucina passo passo</span><span id="cucina-timer" class="cucina-timer" data-azione="cucina-stop-timer" hidden></span></div>
+      <button type="button" class="modale-chiudi" data-azione="cucina-chiudi" aria-label="Chiudi">✕</button>
+    </div>
+    <div id="cucina-schede" class="cucina-schede"></div>
+    <div class="progresso"><div id="cucina-barra"></div></div>
+    <div id="cucina-pagina" class="cucina-pagina" aria-live="polite"></div>
+    <div class="cucina-piede">
+      <button type="button" class="btn" data-azione="cucina-indietro">◀ Indietro</button>
+      <span id="cucina-conta" class="piccolo muto"></span>
+      <button type="button" class="btn primario" data-azione="cucina-avanti" id="cucina-avanti">Avanti ▶</button>
+    </div>
+  </aside>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="menus.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
