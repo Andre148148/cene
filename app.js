@@ -83,8 +83,25 @@
   let fb = null; // { fs, ref }
   let sincronizzato = null; // ultimo stato ricevuto/inviato, per mandare solo le differenze
   let statoFamiglia = ''; // '', 'collegamento', 'ok', 'errore: ...'
+  const LS_FIREBASE = 'cdf-firebase-v1';
   const copia = o => JSON.parse(JSON.stringify(o));
   const codiceFamiglia = () => { try { return localStorage.getItem(LS_FAMIGLIA) || ''; } catch (e) { return ''; } };
+  const configSalvata = () => { try { return JSON.parse(localStorage.getItem(LS_FIREBASE) || 'null'); } catch (e) { return null; } };
+  if (!window.CDF_FIREBASE) window.CDF_FIREBASE = configSalvata();
+  // dal blocco "const firebaseConfig = {...}" copiato dalla console Firebase
+  function leggiConfig(testo) {
+    const out = {};
+    for (const c of ['apiKey', 'authDomain', 'projectId', 'storageBucket', 'messagingSenderId', 'appId']) {
+      const m = testo.match(new RegExp(c + '\\s*:\\s*["\']([^"\']+)["\']'));
+      if (m) out[c] = m[1];
+    }
+    return out.apiKey && out.projectId && out.appId ? out : null;
+  }
+  // se la configurazione non sta in config.js viaggia insieme al codice famiglia: l'altro telefono incolla una cosa sola
+  function codiceDaCondividere() {
+    const cfg = configSalvata();
+    return cfg ? 'CENE1.' + btoa(JSON.stringify({ c: cfg, f: codiceFamiglia() })) : codiceFamiglia();
+  }
   function nuovoCodice() {
     const alfabeto = 'abcdefghjkmnpqrstuvwxyz23456789';
     const n = new Uint8Array(24);
@@ -715,7 +732,11 @@
     const cal = location.protocol === 'https:' ? `webcal://${location.host}${location.pathname.replace(/[^/]*$/, '')}cene.ics` : '';
     let sync;
     if (!window.CDF_FIREBASE) {
-      sync = '<p>⚠️ Sincronizzazione non ancora configurata: manca la configurazione di Firebase in <code>config.js</code> (vedi la guida). Intanto le modifiche restano su questo telefono.</p>';
+      sync = `<p>Per sincronizzare i due iPhone incolla qui sotto, <b>su un solo telefono</b>, il blocco di configurazione copiato da Firebase
+          (Impostazioni progetto › Le tue app › tasto copia). <b>Sull'altro telefono</b> incolla invece il codice che ti manda il primo.</p>
+        <textarea id="codice-famiglia" rows="5" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="incolla qui"
+          style="width:100%;font:13px/1.4 ui-monospace,monospace;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink)"></textarea>
+        <div class="azioni" style="margin-top:8px"><button class="btn primario" type="button" data-azione="famiglia-collega">Collega</button></div>`;
     } else if (!codice) {
       sync = `<p>Per vedere le stesse spunte e gli stessi spostamenti su tutti e due gli iPhone serve un <b>codice famiglia</b>.</p>
         <p class="piccolo muto">Sul primo telefono tocca "Crea codice", poi mandalo all'altro telefono (es. WhatsApp) e incollalo qui.</p>
@@ -728,6 +749,7 @@
         : `⚠️ Non collegato (${esc(statoFamiglia.replace(/^errore: /, ''))}): le modifiche si sincronizzano appena torna la rete.`;
       sync = `<p>${st}</p>
         <p class="piccolo muto">Codice famiglia: <code>${esc(codice)}</code></p>
+        <textarea readonly rows="3" style="width:100%;font:12px/1.4 ui-monospace,monospace;padding:6px 8px;border-radius:10px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2)" aria-label="Codice per l'altro telefono">${esc(codiceDaCondividere())}</textarea>
         <div class="azioni"><button class="btn" type="button" data-azione="famiglia-copia">📋 Copia codice per l'altro telefono</button>
           <button class="btn fantasma" type="button" data-azione="famiglia-scollega">Scollega questo telefono</button></div>`;
     }
@@ -1164,14 +1186,32 @@
         break;
       }
       case 'famiglia-collega': {
-        const c = ($('#codice-famiglia').value || '').trim().toLowerCase().replace(/\s+/g, '');
-        if (c.replace(/-/g, '').length < 20) { toast('Il codice non è completo', 'errore'); break; }
+        const testo = ($('#codice-famiglia').value || '').trim();
+        let c = testo.toLowerCase().replace(/\s+/g, '');
+        const cfg = leggiConfig(testo);
+        try {
+          if (cfg) { // primo telefono: configurazione Firebase + nuovo codice famiglia
+            localStorage.setItem(LS_FIREBASE, JSON.stringify(cfg));
+            window.CDF_FIREBASE = cfg;
+            c = nuovoCodice();
+          } else if (testo.replace(/\s+/g, '').startsWith('CENE1.')) { // secondo telefono: codice completo
+            const o = JSON.parse(atob(testo.replace(/\s+/g, '').slice(6)));
+            localStorage.setItem(LS_FIREBASE, JSON.stringify(o.c));
+            window.CDF_FIREBASE = o.c;
+            c = o.f;
+          }
+        } catch (err) { toast('Codice non valido', 'errore'); break; }
+        if (!window.CDF_FIREBASE || c.replace(/-/g, '').length < 20) { toast('Il codice non è completo', 'errore'); break; }
         try { localStorage.setItem(LS_FAMIGLIA, c); } catch (err) { /* niente */ }
         collegaFamiglia(c);
+        if (cfg) {
+          try { await navigator.clipboard.writeText(codiceDaCondividere()); toast('Collegato! Codice per l\'altro telefono copiato: mandalo (es. WhatsApp)'); }
+          catch (err) { toast('Collegato! Copia il codice per l\'altro telefono dalla scheda Info'); }
+        }
         break;
       }
       case 'famiglia-copia':
-        try { await navigator.clipboard.writeText(codiceFamiglia()); toast('Codice copiato'); } catch (err) { toast('Selezionalo e copialo a mano', 'errore'); }
+        try { await navigator.clipboard.writeText(codiceDaCondividere()); toast('Codice copiato: mandalo all\'altro telefono'); } catch (err) { toast('Selezionalo e copialo a mano', 'errore'); }
         break;
       case 'famiglia-scollega':
         if (confirm('Scollegare questo telefono dalla sincronizzazione di famiglia?')) { try { localStorage.removeItem(LS_FAMIGLIA); } catch (err) { /* niente */ } location.reload(); }

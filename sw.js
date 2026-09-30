@@ -1,5 +1,5 @@
 // Funzionamento senza rete: prima prova la rete (menu sempre aggiornato), altrimenti usa la copia salvata.
-const CACHE = 'cene-202609301635';
+const CACHE = 'cene-202609301654';
 const FILE = ['./', 'index.html', 'style.css', 'app.js', 'menus.js', 'config.js', 'manifest.webmanifest', 'icona-180.png', 'icona-192.png', 'icona-512.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILE)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => {
