@@ -282,7 +282,7 @@ $('section').onchange = e => {
   if (state.section) { state.inside = false; $('inside').checked = false; liftTarget = 0; camTween = { pos: new THREE.Vector3(400, 80, 225), tgt: new THREE.Vector3(0, 45, 225) }; }
   else camTween = { pos: new THREE.Vector3(-760, 430, 1450), tgt: new THREE.Vector3(-60, 0, 40) };
 };
-window.__state = state; window.__rebuild = () => { refreshUI(); build(); };
+window.__cam = { camera, controls }; window.__state = state; window.__rebuild = () => { refreshUI(); build(); };
 
 /* ---------- Loop ---------- */
 function resize() {
