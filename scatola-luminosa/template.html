@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scatola luminosa 100×50 cm – progetto 3D</title>
+<style>
+  html,body{margin:0;height:100%;background:#15171c;color:#e8eaee;font:14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;overflow:hidden}
+  #c{position:fixed;inset:0;width:100%;height:100%;display:block}
+  #panel{position:fixed;top:12px;right:12px;width:330px;max-width:calc(100vw - 24px);max-height:calc(100vh - 100px);overflow:auto;background:rgba(20,22,28,.88);border:1px solid #333845;border-radius:12px;padding:14px 16px;backdrop-filter:blur(6px)}
+  h1{font-size:15px;margin:0 0 8px}
+  h2{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#9aa3b5;margin:12px 0 6px}
+  .seg{display:flex;gap:6px}
+  .seg button{flex:1;padding:8px 6px;border-radius:8px;border:1px solid #3a4050;background:#1d2029;color:#cfd4e0;cursor:pointer;font:inherit}
+  .seg button.sel{background:#f2c14e;color:#1a1a1a;border-color:#f2c14e;font-weight:600}
+  label{display:flex;align-items:center;gap:8px;margin:6px 0;cursor:pointer}
+  select{background:#1d2029;color:#e8eaee;border:1px solid #3a4050;border-radius:8px;padding:6px;font:inherit;width:100%}
+  #stats div{margin:3px 0}
+  #stats table{width:100%;border-collapse:collapse;margin-top:6px;font-size:13px}
+  #stats th,#stats td{border-bottom:1px solid #2c3140;padding:4px 2px;text-align:left}
+  .note{color:#8b94a8;font-size:12px;margin-top:6px}
+  #switchbar{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);display:flex;align-items:center;gap:14px;background:rgba(20,22,28,.88);border:1px solid #333845;border-radius:40px;padding:10px 22px}
+  #sw{width:78px;height:38px;border-radius:19px;background:#3a3f4d;position:relative;cursor:pointer;transition:background .2s;border:0;padding:0}
+  #sw::after{content:"";position:absolute;top:4px;left:4px;width:30px;height:30px;border-radius:50%;background:#fff;transition:transform .2s}
+  #sw.on{background:#f2c14e}
+  #sw.on::after{transform:translateX(40px)}
+  #swtxt{font-weight:700;letter-spacing:.08em;min-width:70px}
+  #hint{color:#8b94a8;font-size:12px}
+  #labels{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+  .lbl{position:absolute;left:0;top:0;white-space:nowrap;font-size:12px;background:#f2c14e;color:#1a1a1a;padding:2px 7px;border-radius:5px;margin:-26px 0 0 12px;display:none}
+  .lbl::before{content:"";position:absolute;left:-12px;top:100%;width:12px;height:12px;border-left:2px solid #f2c14e;border-bottom:2px solid #f2c14e;margin-top:-2px;box-sizing:border-box}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="labels"></div>
+<div id="panel">
+  <h1>Scatola luminosa 100 × 50 cm</h1>
+  <h2>Altezza montanti</h2>
+  <div class="seg"><button data-depth="60">60 mm · 10×60</button><button data-depth="85">85 mm · 15×85</button></div>
+  <h2>Vista</h2>
+  <label><input type="checkbox" id="inside"> Solleva il pannello (vedi l'interno)</label>
+  <label><input type="checkbox" id="section"> Sezione (come nel tuo schizzo)</label>
+  <h2>Luce</h2>
+  <select id="temp"><option value="3000">Bianco caldo 3000K</option><option value="4000">Bianco naturale 4000K (la tua striscia)</option><option value="6500">Bianco freddo 6500K</option></select>
+  <h2>Dati</h2>
+  <div id="stats"></div>
+</div>
+<div id="switchbar"><div id="sw" role="switch" tabindex="0"></div><div id="swtxt">ACCESO</div><div id="hint">barra spaziatrice = on/off · trascina per ruotare</div></div>
+<script>/*BUNDLE*/</script>
+</body>
+</html>
