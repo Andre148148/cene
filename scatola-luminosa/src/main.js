@@ -7,16 +7,21 @@ import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 import { simulateBay } from './sim.js';
 
 /* ---------- Parametri del progetto (mm) ---------- */
+// Costruzione attuale: montanti 15x80 a FIANCO del pannello MDF da 10 mm; pannello opalino appoggiato sui listelli 8x8.
 const L = 1000, W = 500;       // dimensioni esterne scatola
-const BACK = 8;                // tavola di fondo
-const DIFF = 3;                // pannello opaco (vetro sintetico opalino)
-const BAR = 6;                 // altezza listello
-const BARW = 10;               // larghezza listello (striscia COB 8 mm -> serve >= 8 mm)
-const STRIP_W = 8;             // larghezza striscia COB
-const WALL = { 60: 10, 85: 15 }; // spessore montante in funzione dell'altezza (10x60 / 15x85)
+const T = 15;                  // spessore montanti
+const WH = 80;                 // altezza montanti (dal piano inferiore dell'MDF)
+const BACK = 10;               // pannello inferiore MDF
+const DIFF = 3;                // pannello opalino (vetro sintetico)
+const BAR = 8, BARW = 8;       // listello 8x8
+const STRIP_W = 8;             // striscia COB 8 mm
+const PL = L - 2 * T, PW = W - 2 * T;   // 970 x 470: MDF e luce interna
+const ZD = WH - DIFF;          // 77: quota di appoggio del pannello opalino (cima di listelli e traversi)
+const HU = ZD - BACK;          // 67: altezza utile sopra l'MDF
+const BAY = (PL - 2 * T) / 3;  // 313,3: larghezza di ogni campata
 const TEMPS = { '3000': [1, 0.78, 0.52], '4000': [1, 0.87, 0.70], '6500': [0.93, 0.96, 1] };
 
-const state = { on: true, depth: 85, inside: false, section: false, temp: '4000' };
+const state = { on: true, inside: false, section: false, temp: '4000' };
 
 /* ---------- Scena ---------- */
 const canvas = document.getElementById('c');
@@ -73,33 +78,33 @@ composer.addPass(new OutputPass());
 const world = new THREE.Group(); scene.add(world); // contenitore ruotabile per la vista sezione
 const WHITE = new THREE.MeshStandardMaterial({ color: 0xf3f2ec, roughness: 0.92 });
 const WOOD = new THREE.MeshStandardMaterial({ color: 0xc9a36b, roughness: 0.8 });
+const MDF = new THREE.MeshStandardMaterial({ color: 0xa9835a, roughness: 0.9 });
 const PCB = new THREE.MeshStandardMaterial({ color: 0xf0f0f0, roughness: 0.6 });
 const chipMat = new THREE.MeshBasicMaterial({ color: 0x777777 });
 const diffMat = new THREE.MeshStandardMaterial({ color: 0xeeeeea, roughness: 0.55, emissive: 0xffffff, emissiveIntensity: 0 });
 const clipPlane = new THREE.Plane(new THREE.Vector3(-1, 0, 0), 0); // tiene x <= 0 (taglio al centro della campata centrale)
-const allMats = [WHITE, WOOD, PCB, diffMat, chipMat];
+const allMats = [WHITE, WOOD, MDF, PCB, diffMat, chipMat];
 let sectionGroup = null;
 
 /* ---------- Texture di luminosità del pannello (stima al 1° rimbalzo) ---------- */
-function stats(H, t) {
-  const b = (L - 4 * t) / 3, bh = W - 2 * t;
-  const r = simulateBay(b, bh, H, BAR, BARW);
-  let mn = 1e9, mx = 0, s = 0, n = 0;
+function stats(Hu) {
+  const r = simulateBay(BAY, PW, Hu, BAR, BARW);
+  let mn = 1e9, mx = 0, sm = 0, n = 0;
   for (let j = 0; j < r.ny; j++) for (let i = 0; i < r.nx; i++) {
     const x = (i + .5) * 16, y = (j + .5) * 16;
-    if (x < 20 || y < 20 || x > b - 20 || y > bh - 20) continue;
-    const v = r.data[j * r.nx + i]; mn = Math.min(mn, v); mx = Math.max(mx, v); s += v; n++;
+    if (x < 20 || y < 20 || x > BAY - 20 || y > PW - 20) continue;
+    const v = r.data[j * r.nx + i]; mn = Math.min(mn, v); mx = Math.max(mx, v); sm += v; n++;
   }
   const centre = r.data[Math.floor(r.ny / 2) * r.nx + Math.floor(r.nx / 2)];
-  return { r, b, bh, minMax: mn / mx, centreAvg: centre / (s / n), avg: s / n };
+  return { r, minMax: mn / mx, centreAvg: centre / (sm / n), avg: sm / n };
 }
 
-function makeLightMap(H, t) {
-  const { r, b, bh, avg } = stats(H, t);
-  const big = document.createElement('canvas'); big.width = L; big.height = W;
+function makeLightMap(Hu) {
+  const { r, avg } = stats(Hu);
+  const big = document.createElement('canvas'); big.width = PL; big.height = PW;
   const g = big.getContext('2d');
   const enc = (lin) => Math.round(255 * Math.pow(Math.min(1, Math.max(0, lin)), 1 / 2.2));
-  const dark = enc(0.06); g.fillStyle = `rgb(${dark},${dark},${dark})`; g.fillRect(0, 0, L, W);
+  const dark = enc(0.06); g.fillStyle = `rgb(${dark},${dark},${dark})`; g.fillRect(0, 0, PL, PW);
   const small = document.createElement('canvas'); small.width = r.nx; small.height = r.ny;
   const sg = small.getContext('2d'); const img = sg.createImageData(r.nx, r.ny);
   for (let j = 0; j < r.ny; j++) for (let i = 0; i < r.nx; i++) {
@@ -109,13 +114,8 @@ function makeLightMap(H, t) {
   }
   sg.putImageData(img, 0, 0);
   g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
-  const Li = L - 2 * t;
-  for (let i = 0; i < 3; i++) {
-    const xmin = -Li / 2 + i * (b + t);
-    g.drawImage(small, xmin + L / 2, t, b, bh);
-  }
-  // sfuma i bordi (la luce si diffonde nello spessore del pannello opalino)
-  const out = document.createElement('canvas'); out.width = L; out.height = W;
+  for (let i = 0; i < 3; i++) g.drawImage(small, i * (BAY + T), 0, BAY, PW);
+  const out = document.createElement('canvas'); out.width = PL; out.height = PW;
   const og = out.getContext('2d'); og.filter = 'blur(5px)'; og.drawImage(big, 0, 0);
   const tex = new THREE.CanvasTexture(out);
   tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 8;
@@ -127,8 +127,8 @@ let boxGroup = null, diffuserMesh = null, spots = [];
 const labels = []; // etichette della vista sezione
 let lift = 0, liftTarget = 0;
 
-function faceMats(innerIdx) {
-  const m = [WOOD, WOOD, WOOD, WOOD, WHITE, WOOD];   // +x -x +y -y +z -z
+function faceMats(innerIdx, top = WOOD) {
+  const m = [WOOD, WOOD, WOOD, WOOD, top, WOOD];   // +x -x +y -y +z -z
   if (innerIdx >= 0) m[innerIdx] = WHITE;
   return m;
 }
@@ -142,79 +142,72 @@ function build() {
   spots.forEach(s => { world.remove(s); world.remove(s.target); }); spots = [];
   boxGroup = new THREE.Group(); world.add(boxGroup);
 
-  const H = state.depth, t = WALL[H];
-  const zTop = BACK + H;               // piano di appoggio del pannello
-  const Li = L - 2 * t, b = (Li - 2 * t) / 3, bh = W - 2 * t;
+  const xs = i => -PL / 2 + i * (BAY + T);
 
-  // fondo (tavola) – faccia interna bianca
-  box(L, W, BACK, 0, 0, BACK / 2, faceMats(4));
-  // montanti lunghi (10x60 / 15x85): faccia interna = verso il centro
-  box(L, t, H, 0, W / 2 - t / 2, BACK + H / 2, faceMats(3));   // y+  -> interno -y
-  box(L, t, H, 0, -(W / 2 - t / 2), BACK + H / 2, faceMats(2)); // y-  -> interno +y
-  // testate
-  box(t, bh, H, L / 2 - t / 2, 0, BACK + H / 2, faceMats(1));    // x+ -> interno -x
-  box(t, bh, H, -(L / 2 - t / 2), 0, BACK + H / 2, faceMats(0)); // x- -> interno +x
-  // traversi interni (bianchi)
-  [-Li / 2 + b + t / 2, -Li / 2 + 2 * b + 1.5 * t].forEach(x => box(t, bh, H, x, 0, BACK + H / 2, WHITE));
+  // pannello inferiore MDF 10 mm: faccia interna (alto) bianca
+  box(PL, PW, BACK, 0, 0, BACK / 2, [MDF, MDF, MDF, MDF, WHITE, MDF]);
+  // montanti 15x80 a fianco del pannello (dal piano inferiore dell'MDF fino in cima)
+  box(L, T, WH, 0, W / 2 - T / 2, WH / 2, faceMats(3));
+  box(L, T, WH, 0, -(W / 2 - T / 2), WH / 2, faceMats(2));
+  box(T, PW, WH, L / 2 - T / 2, 0, WH / 2, faceMats(1));
+  box(T, PW, WH, -(L / 2 - T / 2), 0, WH / 2, faceMats(0));
+  // traversi: poggiano sull'MDF e arrivano alla quota dei listelli (altezza 67)
+  [xs(1) - T / 2, xs(2) - T / 2].forEach(x => box(T, PW, HU, x, 0, BACK + HU / 2, WHITE));
 
-  // listelli 10x6 + striscia COB 8 mm sul loro lato inferiore (verso il fondo)
-  const zBar = zTop - BAR / 2, zStrip = zTop - BAR - 0.6;
-  const ymin = -(W / 2 - t), ymax = W / 2 - t;
+  // listelli 8x8 + striscia COB 8 mm sotto (rivolta in basso)
+  const zBar = ZD - BAR / 2, zStrip = ZD - BAR - 0.6;
+  const ymin = -PW / 2, ymax = PW / 2;
   const addBar = (len, cx, cy, alongY) => {
     box(alongY ? BARW : len, alongY ? len : BARW, BAR, cx, cy, zBar, WHITE);
     box(alongY ? STRIP_W : len, alongY ? len : STRIP_W, 1.2, cx, cy, zStrip, PCB);
-    box(alongY ? 4 : len, alongY ? len : 4, 0.8, cx, cy, zStrip - 0.9, chipMat); // COB: linea continua
+    box(alongY ? 4 : len, alongY ? len : 4, 0.8, cx, cy, zStrip - 0.9, chipMat);
   };
   for (let i = 0; i < 3; i++) {
-    const xmin = -Li / 2 + i * (b + t), xmax = xmin + b, cx = (xmin + xmax) / 2;
-    addBar(bh, xmin + BARW / 2, 0, true);
-    addBar(bh, xmax - BARW / 2, 0, true);
-    addBar(b - 2 * BARW, cx, ymin + BARW / 2, false);
-    addBar(b - 2 * BARW, cx, ymax - BARW / 2, false);
-    // fari per l'illuminazione reale dell'interno quando è acceso
+    const xmin = xs(i), xmax = xmin + BAY, cx = (xmin + xmax) / 2;
+    addBar(PW, xmin + BARW / 2, 0, true);
+    addBar(PW, xmax - BARW / 2, 0, true);
+    addBar(BAY - 2 * BARW, cx, ymin + BARW / 2, false);
+    addBar(BAY - 2 * BARW, cx, ymax - BARW / 2, false);
     const mk = (px, py, tx, ty) => {
-      const s = new THREE.SpotLight(0xffffff, 0, 0, 1.25, 1, 1);
-      s.position.set(px, py, zTop - BAR - 1); s.target.position.set(tx, ty, BACK);
-      world.add(s); world.add(s.target); spots.push(s);
+      const sp = new THREE.SpotLight(0xffffff, 0, 0, 1.25, 1, 1);
+      sp.position.set(px, py, ZD - BAR - 1); sp.target.position.set(tx, ty, BACK);
+      world.add(sp); world.add(sp.target); spots.push(sp);
     };
     mk(xmin + BARW / 2, 0, xmin + 60, 0); mk(xmax - BARW / 2, 0, xmax - 60, 0);
     mk(cx, ymin + BARW / 2, cx, ymin + 60); mk(cx, ymax - BARW / 2, cx, ymax - 60);
   }
 
-  // pannello opaco (vetro sintetico) con mappa di luminosità stimata
+  // pannello opalino: appoggiato sui listelli, a filo con la cima dei montanti
   if (diffMat.emissiveMap) diffMat.emissiveMap.dispose();
-  diffMat.emissiveMap = makeLightMap(H, t); diffMat.needsUpdate = true;
-  diffuserMesh = new THREE.Mesh(new THREE.BoxGeometry(L, W, DIFF), diffMat);
-  diffuserMesh.position.set(0, 0, zTop + DIFF / 2);
+  diffMat.emissiveMap = makeLightMap(HU); diffMat.needsUpdate = true;
+  diffuserMesh = new THREE.Mesh(new THREE.BoxGeometry(PL - 2, PW - 2, DIFF), diffMat);
+  diffuserMesh.position.set(0, 0, ZD + DIFF / 2);
   boxGroup.add(diffuserMesh);
 
-  // profilo di sezione al centro della campata centrale (x = 0), come nello schizzo
+  // profilo di sezione al centro della campata centrale (x = 0)
   if (sectionGroup) world.remove(sectionGroup);
   sectionGroup = new THREE.Group(); world.add(sectionGroup);
   const cap = (y0, y1, z0, z1, col, dx = 0.4) => {
     const geo = new THREE.PlaneGeometry(y1 - y0, z1 - z0);
-    geo.applyMatrix4(new THREE.Matrix4().makeBasis(new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 0, 1), new THREE.Vector3(1, 0, 0))); // x->y, y->z, normale +x
+    geo.applyMatrix4(new THREE.Matrix4().makeBasis(new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 0, 1), new THREE.Vector3(1, 0, 0)));
     const mesh = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color: col, side: THREE.DoubleSide }));
     mesh.position.set(dx, (y0 + y1) / 2, (z0 + z1) / 2); sectionGroup.add(mesh);
   };
-  cap(-W / 2, W / 2, 0, BACK, 0xc9a36b);                                   // tavola
-  cap(-W / 2, -W / 2 + t, BACK, zTop, 0xc9a36b); cap(W / 2 - t, W / 2, BACK, zTop, 0xc9a36b); // montanti
-  cap(-W / 2 + t, -W / 2 + t + BARW, zTop - BAR, zTop, 0xf3f2ec, 0.5);       // listello 10x6
-  cap(W / 2 - t - BARW, W / 2 - t, zTop - BAR, zTop, 0xf3f2ec, 0.5);
-  cap(-W / 2 + t + (BARW - STRIP_W) / 2, -W / 2 + t + (BARW + STRIP_W) / 2, zTop - BAR - 1.2, zTop - BAR, 0xffffff, 0.6); // striscia
-  cap(W / 2 - t - (BARW + STRIP_W) / 2, W / 2 - t - (BARW - STRIP_W) / 2, zTop - BAR - 1.2, zTop - BAR, 0xffffff, 0.6);
-  cap(-W / 2, W / 2, zTop, zTop + DIFF, 0xdfe8ee);                           // pannello
+  cap(-PW / 2, PW / 2, 0, BACK, 0xa9835a);                                          // MDF
+  cap(-W / 2, -W / 2 + T, 0, WH, 0xc9a36b); cap(W / 2 - T, W / 2, 0, WH, 0xc9a36b);  // montanti
+  cap(-PW / 2, -PW / 2 + BARW, ZD - BAR, ZD, 0xf3f2ec, 0.5); cap(PW / 2 - BARW, PW / 2, ZD - BAR, ZD, 0xf3f2ec, 0.5);
+  cap(-PW / 2, -PW / 2 + STRIP_W, ZD - BAR - 1.2, ZD - BAR, 0xffffff, 0.6); cap(PW / 2 - STRIP_W, PW / 2, ZD - BAR - 1.2, ZD - BAR, 0xffffff, 0.6);
+  cap(-PW / 2 + 1, PW / 2 - 1, ZD, WH, 0xdfe8ee);                                    // pannello opalino
   sectionGroup.visible = state.section;
 
   applyClip(); setLight();
 
-  // etichette per la vista sezione (piano x=0)
-  const yl = -W / 2 + t;
+  const yl = -PW / 2;
   const lp = [
-    ['Pannello opalino 3 mm', [0, yl + 30, zTop + DIFF], 40, -40],
-    ['Listello 10×6 + striscia COB 8 mm rivolta in basso', [0, yl + BARW / 2, zTop - BAR - 1.5], 70, 60],
-    [`Montante ${t}×${H} mm (interno bianco)`, [0, -W / 2 + t / 2, BACK + H * 0.4], 0, 0],
-    ['Tavola di fondo 8 mm (bianco)', [0, yl + 80, BACK / 2], 40, 50],
+    ['Pannello opalino 3 mm', [0, yl + 40, WH], 40, -40, ],
+    ['Listello 8×8 + striscia COB 8 mm rivolta in basso', [0, yl + BARW / 2, ZD - BAR - 1.5], 70, 60],
+    [`Montante ${T}×${WH} mm (a fianco dell'MDF)`, [0, -W / 2 + T / 2, WH * 0.5], 0, 0],
+    ['Pannello inferiore MDF 10 mm (bianco)', [0, yl + 80, BACK / 2], 40, 50],
   ];
   labels.forEach(l => l.el.remove()); labels.length = 0;
   lp.forEach(([txt, p, dx, dy]) => {
@@ -247,20 +240,18 @@ function setLight() {
   diffMat.emissive.setRGB(r, g, b);
 }
 function updateStats() {
-  const H = state.depth, t = WALL[H];
-  const b = (L - 4 * t) / 3, bh = W - 2 * t;
-  const strip = 3 * (2 * bh + 2 * (b - 2 * BARW)) / 1000;
-  const s60 = stats(60, WALL[60]), s85 = stats(85, WALL[85]);
-  const cur = H === 60 ? s60 : s85;
+  const strip = 3 * (2 * PW + 2 * (BAY - 2 * BARW)) / 1000;
+  const cur = stats(HU), alt = stats(80), low = stats(60);
+  const pc = v => (v * 100).toFixed(0) + '%';
   document.getElementById('stats').innerHTML = `
-    <div><b>Ingombro esterno:</b> ${L} × ${W} × ${H + BACK + DIFF} mm</div>
-    <div><b>Campate:</b> 3 da ${b.toFixed(0)} × ${bh} mm</div>
-    <div><b>Striscia COB necessaria:</b> ≈ ${strip.toFixed(1)} m (su rotolo da 5 m)</div>
-    <div><b>Uniformità stimata (${H} mm):</b> centro = ${(cur.centreAvg * 100).toFixed(0)}% della media, min/max = ${(cur.minMax * 100).toFixed(0)}%</div>
-    <table><tr><th></th><th>60 mm (10×60)</th><th>85 mm (15×85)</th></tr>
-    <tr><td>centro / media</td><td>${(s60.centreAvg * 100).toFixed(0)}%</td><td>${(s85.centreAvg * 100).toFixed(0)}%</td></tr>
-    <tr><td>min / max</td><td>${(s60.minMax * 100).toFixed(0)}%</td><td>${(s85.minMax * 100).toFixed(0)}%</td></tr></table>
-    <div class="note">Stima al 1° rimbalzo, fondo bianco 85%: nella realtà i rimbalzi sulle pareti bianche migliorano un po' il risultato.</div>`;
+    <div><b>Ingombro esterno:</b> ${L} × ${W} × ${WH} mm</div>
+    <div><b>MDF inferiore:</b> ${PL} × ${PW} × ${BACK} mm · <b>opalino:</b> ${PL - 2} × ${PW - 2} × ${DIFF} mm</div>
+    <div><b>Altezza utile LED → MDF:</b> ${HU} mm · <b>campate:</b> 3 da ${BAY.toFixed(0)} × ${PW} mm</div>
+    <div><b>Striscia COB necessaria:</b> ≈ ${strip.toFixed(1)} m (rotolo da 5 m)</div>
+    <table><tr><th></th><th>60 mm</th><th>${HU} mm (attuale)</th><th>80 mm</th></tr>
+    <tr><td>centro / media</td><td>${pc(low.centreAvg)}</td><td>${pc(cur.centreAvg)}</td><td>${pc(alt.centreAvg)}</td></tr>
+    <tr><td>min / max</td><td>${pc(low.minMax)}</td><td>${pc(cur.minMax)}</td><td>${pc(alt.minMax)}</td></tr></table>
+    <div class="note">Stima al 1° rimbalzo, fondo bianco 85%: nella realtà i rimbalzi sulle pareti bianche migliorano un po' il risultato. 80 mm = montanti sopra l'MDF (alternativa).</div>`;
 }
 
 /* ---------- UI ---------- */
@@ -268,18 +259,16 @@ const $ = id => document.getElementById(id);
 function refreshUI() {
   $('sw').classList.toggle('on', state.on);
   $('swtxt').textContent = state.on ? 'ACCESO' : 'SPENTO';
-  document.querySelectorAll('[data-depth]').forEach(b => b.classList.toggle('sel', +b.dataset.depth === state.depth));
   $('inside').checked = state.inside; $('section').checked = state.section; $('temp').value = state.temp;
 }
 $('sw').onclick = () => { state.on = !state.on; refreshUI(); };
 window.addEventListener('keydown', e => { if (e.code === 'Space') { e.preventDefault(); $('sw').click(); } });
-document.querySelectorAll('[data-depth]').forEach(b => b.onclick = () => { state.depth = +b.dataset.depth; refreshUI(); build(); });
 $('inside').onchange = e => { state.inside = e.target.checked; liftTarget = state.inside ? 280 : 0; };
 $('temp').onchange = e => { state.temp = e.target.value; setLight(); };
 let camTween = null;
 $('section').onchange = e => {
   state.section = e.target.checked; applyClip();
-  if (state.section) { state.inside = false; $('inside').checked = false; liftTarget = 0; camTween = { pos: new THREE.Vector3(400, 80, 225), tgt: new THREE.Vector3(0, 45, 225) }; }
+  if (state.section) { state.inside = false; $('inside').checked = false; liftTarget = 0; camTween = { pos: new THREE.Vector3(400, 70, 225), tgt: new THREE.Vector3(0, 40, 225) }; }
   else camTween = { pos: new THREE.Vector3(-760, 430, 1450), tgt: new THREE.Vector3(-60, 0, 40) };
 };
 window.__cam = { camera, controls }; window.__state = state; window.__rebuild = () => { refreshUI(); build(); };
@@ -299,7 +288,7 @@ function tick() {
   k += (target - k) * a;
   if (Math.abs(target - k) < 0.003) k = target;
   lift += (liftTarget - lift) * a;
-  if (diffuserMesh) { diffuserMesh.position.z = BACK + state.depth + DIFF / 2 + lift * 0.8; diffuserMesh.position.y = lift * 1.25; }
+  if (diffuserMesh) { diffuserMesh.position.z = ZD + DIFF / 2 + lift * 0.8; diffuserMesh.position.y = lift * 1.25; }
   diffMat.emissiveIntensity = 1.0 * k;
   const [r, g, b] = TEMPS[state.temp];
   const c = 0.35 + 2.2 * k;
