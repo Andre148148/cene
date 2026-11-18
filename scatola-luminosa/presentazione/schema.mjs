@@ -86,8 +86,8 @@ function pagina2() {
   const s = 0.255, sz = 0.5, ox = 14, oz = 66;
   const X = x => ox + (x + P.L / 2) * s, Z = z => oz - z * sz;
   let g = Tx(ox, 9, 'Alzato interno del lato lungo "alto" (vista dall\'interno verso il muro) – percorso dei cavi', { anchor: 'start', size: 3.6, bold: true });
-  g += R(X(-P.L / 2), Z(P.WH), P.L * s, P.WH * sz, 'url(#wood)', '#333', 0.35);
-  g += R(X(-P.PL / 2), Z(P.BACK), P.PL * s, P.BACK * sz, '#d8b98d', '#555', 0.2);                 // MDF in sezione
+  g += R(X(-P.L / 2), Z(P.TOP), P.L * s, P.WH * sz, 'url(#wood)', '#333', 0.35);                       // montanti sopra l'MDF
+  g += R(X(-P.L / 2), Z(P.BACK), P.L * s, P.BACK * sz, '#d8b98d', '#555', 0.2);                    // MDF 1000 × 500 in sezione
   barsLong.filter(b => b.y > 0).forEach(b => { g += R(X(b.x0), Z(P.ZD), (b.x1 - b.x0) * s, P.BAR * sz, '#fff', '#555', 0.2); });
   pieces.filter(p => p.y > 0 && p.kind === 'seg').forEach(p => { g += R(X(p.x - p.len / 2), Z(P.ZSTRIP), p.len * s, 1.2 * sz + 0.3, '#f2c14e', '#a37a10', 0.15); g += Tx(X(p.x), Z(P.ZSTRIP) - 1.5, p.id, { size: 2.1, fill: '#7a5a00', bold: true }); });
   // vertici delle linee verticali (viste di testa) con le loro etichette
@@ -105,16 +105,16 @@ function pagina2() {
   const hz = Z(H.z);
   g += `<circle cx="${X(0).toFixed(2)}" cy="${hz.toFixed(2)}" r="2.6" fill="#fff" stroke="#c33" stroke-width="0.5"/>` + Tx(X(0), hz + 0.8, 'H', { size: 2.2, bold: true, fill: '#c33' });
   g += Ln(X(-6), hz - 2.6, X(-6), zt, RED, 0.5) + Ln(X(6), hz - 2.6, X(6), zt, BLK, 0.5);
-  g += Tx(X(0), hz + 7, 'foro H: Ø10, z = 40 dal piano MDF', { size: 2.3, fill: '#c33' });
-  g += Tx(X(-250), zt + 8, '← DORSALE A (z = 56)', { size: 2.3, fill: RED, bold: true }) + Tx(X(250), zt + 8, 'DORSALE B (z = 56) →', { size: 2.3, fill: RED, bold: true });
+  g += Tx(X(0), hz + 7, 'foro H: Ø10, a 40 mm dalla faccia superiore dell\'MDF', { size: 2.3, fill: '#c33' });
+  g += Tx(X(-250), zt + 8, `← DORSALE A (a ${P.ZTRUNK} mm da terra)`, { size: 2.3, fill: RED, bold: true }) + Tx(X(250), zt + 8, `DORSALE B (a ${P.ZTRUNK} mm da terra) →`, { size: 2.3, fill: RED, bold: true });
   g += Ln(X(-P.L / 2), Z(0) + 4, X(P.L / 2), Z(0) + 4) + Tx(X(0), Z(0) + 7, '1000', { size: 2.5 });
-  g += Tx(X(-P.L / 2), Z(P.WH) - 2, 'Scala verticale ingrandita 2× rispetto all\'orizzontale · listello 8×8 a z 67–75 · striscia sotto il listello · connettori a z ≈ 63 · dorsali a z = 56', { anchor: 'start', size: 2.3, fill: '#555' });
+  g += Tx(X(-P.L / 2), Z(P.TOP) - 2, `Scala verticale ingrandita 2× rispetto all'orizzontale · quote da terra: listello 8×8 ${P.ZSTRIP}–${P.ZD} mm · striscia sotto il listello · connettori ≈ ${Math.round(P.ZCON)} mm · dorsali ${P.ZTRUNK} mm`, { anchor: 'start', size: 2.3, fill: '#555' });
   // tabella cavi
   const ty0 = 96;
   g += Tx(14, ty0 - 5, 'Lista dei cavi con lunghezze di taglio (sezione 0,5 mm², rosso + nero)', { anchor: 'start', size: 3.4, bold: true });
   const rows = [
     ['Cavi USB A e B (dei set)', 'tagliali a ≈ 15 cm dalla striscia, tieni spina + cavo', 'uno per set', 'escono entrambi da H'],
-    ['Dorsale A', 'da H a L0 (x = −481), contro il lato lungo, z = 56', `${trunks[0].cut} mm per filo`, '2 fili (rosso+nero)'],
+    ['Dorsale A', `da H a L0 (x = −481), contro il lato lungo, a ${P.ZTRUNK} mm da terra`, `${trunks[0].cut} mm per filo`, '2 fili (rosso+nero)'],
     ['Dorsale B', 'da H a L5 (x = +481)', `${trunks[1].cut} mm per filo`, '2 fili (rosso+nero)'],
     ['Derivazioni D1–D11', 'dalla dorsale al connettore (6 sul set 1, 5 sul set 2)', '80 mm', '11 coppie'],
     ['Ponticelli PN1–PN5', 'C2→C3, C6→C7, C12→C13, C16→C17, C20→C21 (tutti 24 mm in linea retta)', '80 mm', '5 coppie dal kit (da 15 cm: accorciale)'],
@@ -127,7 +127,7 @@ function pagina2() {
   const y2 = ty0 + rows.length * 6.4 + 6;
   g += Tx(14, y2, 'Come collegare (in quest\'ordine):', { anchor: 'start', size: 3.2, bold: true });
   ['1. Taglia le strisce a pezzi sul segno di taglio; monta le clip sui due estremi che servono (C1–C21).', '2. Posa i ponticelli (arancio): C2→C3, C6→C7, ecc. Rispetta + / −: sulle clip i fili rosso e nero vanno ai poli indicati sulla striscia.',
-    '3. Passa le due spine USB dal foro H; stendi le dorsali A e B a z = 56 contro il lato lungo e fissale con colla a caldo ogni 10 cm.', '4. Salda (o morsetta) le 11 derivazioni alla dorsale, poi inseriscile nelle clip dei connettori feed (C1, C4, C5, C8, C9, C10 / C11, C14, C15, C18, C19).',
+    `3. Passa le due spine USB dal foro H; stendi le dorsali A e B a ${P.ZTRUNK} mm da terra contro il lato lungo e fissale con colla a caldo ogni 10 cm.`, '4. Salda (o morsetta) le 11 derivazioni alla dorsale, poi inseriscile nelle clip dei connettori feed (C1, C4, C5, C8, C9, C10 / C11, C14, C15, C18, C19).',
     '5. Collega i cavi USB (rosso, nero) alle dorsali A e B. Prima di chiudere accendi un set alla volta e controlla che tutti i pezzi si accendano.'].forEach((t, i) => { g += Tx(15, y2 + 5.6 + i * 5, t, { anchor: 'start', size: 2.5 }); });
   return page(2, 'Alzato del lato lungo, lista cavi e ordine dei collegamenti', svg(273, 183, g));
 }
@@ -156,7 +156,7 @@ function pagina3() {
   checks.forEach((t, i) => { g += Tx(15, 127 + i * 5.2, '☐  ' + t, { anchor: 'start', size: 2.6 }); });
   g += Tx(14, 158, 'Dati e ipotesi da verificare', { anchor: 'start', size: 3.4, bold: true });
   ['7 W/m dalla scheda BTF-Lighting (2 m = 14 W). Taglio ogni 12 mm (dato tuo): ogni pezzo è un multiplo di 12 mm e ogni striscia da 2 m dà 166 unità = 1992 mm.', 'L\'ingombro di 6 mm del connettore oltre la striscia e il passo dei poli (2 poli, 8 mm) vanno confermati sul kit ricevuto.',
-    'Pannello opalino ipotizzato da 5 mm (listelli a 5 mm dal bordo). Con 3 mm i listelli vanno a 3 mm.', 'La posizione del foro H (centro lato lungo, z = 40) è consigliata: puoi spostarlo, ma tieni le due spine sullo stesso punto.'].forEach((t, i) => { g += Tx(15, 164 + i * 5.2, '• ' + t, { anchor: 'start', size: 2.5 }); });
+    'Pannello opalino ipotizzato da 5 mm (listelli a 5 mm dal bordo). Con 3 mm i listelli vanno a 3 mm.', 'La posizione del foro H (centro lato lungo, a 40 mm dall\'MDF) è consigliata: puoi spostarlo, ma tieni le due spine sullo stesso punto.'].forEach((t, i) => { g += Tx(15, 164 + i * 5.2, '• ' + t, { anchor: 'start', size: 2.5 }); });
   const cy = 94, k = 0.125;
   g += Tx(14, cy - 6, 'Piano di taglio: segni ogni 12 mm, ogni striscia viene usata per intero (166 unità = 1992 mm)', { anchor: 'start', size: 3.2, bold: true });
   [1, 2].forEach((set, n) => {

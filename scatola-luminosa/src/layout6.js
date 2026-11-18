@@ -1,16 +1,18 @@
 // Geometria esatta del percorso scelto: 6 linee verticali + 10 tratti da 110 mm, cavità aperta.
 // Sistema di riferimento (mm): x lungo il lato lungo (±485 interno), y lungo il lato corto (±235 interno),
 // z verso l'alto con z = 0 sul piano inferiore dell'MDF. Il lato "alto" in pianta è y = +235.
+// COSTRUZIONE: montanti 15 × 80 APPOGGIATI SOPRA l'MDF 1000 × 500 × 10; pannello opalino appoggiato sui listelli.
 export const P = {
   L: 1000, W: 500, T: 15, WH: 80, BACK: 10, DIFF: 5, BAR: 8, STRIP_W: 8,
-  PL: 970, PW: 470,
+  PL: 970, PW: 470,                    // luce interna dei montanti
 };
-P.ZD = P.WH - P.DIFF;                 // 75: quota della cima dei listelli (appoggio del pannello opalino)
-P.HU = P.ZD - P.BACK;                 // 65: altezza utile
-P.ZSTRIP = P.ZD - P.BAR;              // 67: faccia inferiore del listello (la striscia sta sotto)
-P.ZCON = P.ZSTRIP - 1.2 - 3;          // 62,8: centro dei connettori a clip
-P.ZTRUNK = 56;                        // quota della dorsale
-P.YTRUNK = 232;                       // la dorsale corre contro il lato lungo "alto"
+P.TOP = P.BACK + P.WH;                 // 90: cima dei montanti
+P.ZD = P.TOP - P.DIFF;                 // 85: quota della cima dei listelli (appoggio del pannello opalino)
+P.HU = P.ZD - P.BACK;                  // 75: altezza utile sopra l'MDF
+P.ZSTRIP = P.ZD - P.BAR;               // 77: faccia inferiore del listello (la striscia sta sotto)
+P.ZCON = P.ZSTRIP - 4.2;               // 72,8: centro dei connettori a clip
+P.ZTRUNK = P.ZSTRIP - 11;              // 66: quota della dorsale
+P.YTRUNK = 232;                        // la dorsale corre contro il lato lungo "alto"
 
 const STEP = (P.PL - 8) / 5;          // 192,4
 export const cx = k => -481 + k * STEP;                 // centri delle 6 linee, k = 0..5
@@ -57,7 +59,7 @@ export const feeders = connectors.filter(c => c.role === 'feed').map((c, i) => (
 export const stripLen = set => pieces.filter(p => p.set === set).reduce((a, p) => a + p.len, 0);
 
 // Foro di uscita comune per le due spine USB: centro del lato lungo "alto"
-export const H = { x: 0, y: P.W / 2 - P.T / 2, z: 40, d: 10 };
+export const H = { x: 0, y: P.W / 2 - P.T / 2, z: P.BACK + 40, d: 10 };
 // Dorsali: A verso sinistra (x negativi) fino a L0, B verso destra fino a L5
 export const trunks = [
   { id: 'A', set: 1, x0: -8, x1: cx(0) },
@@ -77,3 +79,6 @@ export const bolts = [1, 2, 3, 4, 5].flatMap(j => [{ x: mx(j), y: 120 }, { x: mx
 export const wireList = [
   ...trunks.map(t => ({ id: 'Dorsale ' + t.id, da: 'Foro H (giunto con cavo USB ' + t.id + ')', a: t.id === 'A' ? 'L0 (estremo sinistro)' : 'L5 (estremo destro)', cut: t.cut, qty: 2, note: 'rosso + nero, 0,5 mm²' })),
 ];
+
+// Squadrette d'acciaio negli 4 angoli interni (posizione indicativa)
+export const brackets = [[-1, -1], [1, -1], [-1, 1], [1, 1]].map(([sx, sy]) => ({ x: sx * (P.PL / 2), y: sy * (P.PW / 2), sx, sy }));

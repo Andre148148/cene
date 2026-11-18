@@ -21,15 +21,22 @@
   #bar button{background:#2a2f3d;color:#fff;border:0;border-radius:50%;width:40px;height:40px;font-size:17px;cursor:pointer}
   #bar button:hover{background:#3a4156}#play{background:#f2c14e!important;color:#111!important}
   #bar label{font-size:12px;color:#9aa3b5}#hint{position:fixed;right:14px;bottom:20px;font-size:12px;color:#7d869a}
+  #tools{position:fixed;left:50%;bottom:76px;transform:translateX(-50%);display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:calc(100vw - 24px)}
+  #tools button{background:rgba(34,38,50,.92);color:#e8eaee;border:1px solid #3a4156;border-radius:20px;padding:7px 14px;font-size:13px;cursor:pointer}
+  #tools button:hover{background:#3a4156}#tools button.act{background:#f2c14e;color:#111;border-color:#f2c14e;font-weight:600}
+  #tools #hide{font-weight:600}
+  .lbl{position:fixed;left:0;top:0;pointer-events:none;white-space:nowrap;font-size:12px;font-weight:600;background:#f2c14e;color:#161616;padding:1px 6px;border-radius:5px;margin:-22px 0 0 8px;display:none;z-index:5}
   @media(max-width:760px){#side{display:none}#card{max-width:calc(100vw - 24px);left:12px;width:auto}}
 </style>
 </head>
 <body>
 <canvas id="c"></canvas>
+<div id="labels"></div>
 <div id="side"><h1>Installazione passo passo</h1><ol id="steps"></ol></div>
 <div id="card"><div id="stitle"></div><div id="sdesc"></div></div>
+<div id="tools"><button id="hide">Nascondi struttura</button><button id="lab">Etichette: sì</button><button id="vTop">Vista dall'alto</button><button id="vWall">Vista lato lungo</button><button id="vBack">Vista spine USB</button><button id="vIso">Vista generale</button></div>
 <div id="bar"><button id="prev" title="Indietro">⏮</button><button id="play" title="Play / pausa">⏸</button><button id="next" title="Avanti">⏭</button><label>velocità <input id="speed" type="range" min="0.5" max="2.5" step="0.1" value="1"></label></div>
-<div id="hint">trascina per ruotare · rotellina per zoom · spazio = play/pausa · ← → = passi</div>
+<div id="hint">trascina per ruotare · rotellina per zoom · spazio = play/pausa · ← → = passi · S = nascondi struttura</div>
 <script>/*BUNDLE*/</script>
 </body>
 </html>
