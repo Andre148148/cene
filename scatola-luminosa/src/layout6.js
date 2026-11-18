@@ -82,3 +82,40 @@ export const wireList = [
 
 // Squadrette d'acciaio negli 4 angoli interni (posizione indicativa)
 export const brackets = [[-1, -1], [1, -1], [-1, 1], [1, 1]].map(([sx, sy]) => ({ x: sx * (P.PL / 2), y: sy * (P.PW / 2), sx, sy }));
+
+/* ---------- Sequenza di montaggio dei collegamenti, striscia per striscia ----------
+   Si parte dalla spina USB, poi un pezzo alla volta: dorsale fino al punto di derivazione, pezzo, clip, derivazione;
+   i tratti bassi (B) si collegano con un ponticello dal fondo della linea vicina. */
+const pcs = Object.fromEntries(pieces.map(p => [p.id, p]));
+const fdByCon = Object.fromEntries(feeders.map(f => [f.con, f]));
+const jmpById = Object.fromEntries(jumpers.map(j => [j.id, j]));
+const defs = [
+  [1, 'usb'], [1, 'piece', 'T3', 'C10'], [1, 'piece', 'L2', 'C9'], [1, 'piece', 'T2', 'C8'], [1, 'piece', 'L1', 'C5'], [1, 'low', 'B2', 'PN2'],
+  [1, 'piece', 'T1', 'C4'], [1, 'piece', 'L0', 'C1'], [1, 'low', 'B1', 'PN1'], [1, 'test'],
+  [2, 'usb'], [2, 'piece', 'L3', 'C11'], [2, 'low', 'B3', 'PN3'], [2, 'piece', 'T4', 'C14'], [2, 'piece', 'L4', 'C15'], [2, 'low', 'B4', 'PN4'],
+  [2, 'piece', 'T5', 'C18'], [2, 'piece', 'L5', 'C19'], [2, 'low', 'B5', 'PN5'], [2, 'test'],
+];
+const run = { 1: -6, 2: 6 };
+export const walk = defs.map(([set, kind, a, b]) => {
+  const k = set === 1 ? 'A' : 'B', sgn = set === 1 ? -1 : 1, w = { set, kind, usb: k };
+  if (kind === 'usb') { w.trunkFrom = 0; w.trunkTo = run[set]; w.title = `Spina USB ${k}: cavo dal foro H e inizio della dorsale ${k}`; w.text = `Passa la spina USB ${k} dal foro H (Ø10), taglia il cavo a circa 15 cm dalla striscia e spela rosso e nero. Salda i due fili all'inizio della dorsale ${k}, a ${P.ZTRUNK} mm da terra contro il lato lungo.`; }
+  if (kind === 'piece') {
+    const p = pcs[a], c = cById[b], f = fdByCon[b];
+    Object.assign(w, { piece: p.id, con: c.id, feeder: f.id, trunkFrom: run[set], trunkTo: f.x, fx: c.x, fy: c.y });
+    run[set] = f.x;
+    w.title = `${p.id} (${p.len} mm): striscia, clip ${c.id}, derivazione ${f.id}`;
+    w.text = `Allunga la dorsale ${k} fino a x = ${f.x.toFixed(0)} mm. Incolla ${p.id} (${p.len} mm) sotto il listello, rivolta in basso. Monta la clip ${c.id} sull'estremo, poi salda la derivazione ${f.id} (80 mm, rosso a +, nero a −) alla dorsale e infilala nella clip.`;
+  }
+  if (kind === 'low') {
+    const p = pcs[a], j = jmpById[b], ca = cById[j.a], cb = cById[j.b];
+    Object.assign(w, { piece: p.id, jumper: j.id, ca: ca.id, cb: cb.id, fx: (ca.x + cb.x) / 2, fy: ca.y, fromPiece: ca.piece });
+    w.title = `${p.id} (${p.len} mm) dal fondo di ${ca.piece}: ponticello ${j.id}`;
+    w.text = `Incolla ${p.id} sul lato lungo basso. Monta la clip ${ca.id} sul fondo di ${ca.piece} e la clip ${cb.id} su ${p.id}, poi unisci le due clip con il ponticello ${j.id} (80 mm, rosso a +, nero a −).`;
+  }
+  if (kind === 'test') {
+    const n = pieces.filter(p => p.set === set).length;
+    w.title = `Collaudo striscia ${set}`;
+    w.text = `Collega la spina USB ${k} al caricatore (5 V, almeno 3 A) e accendi: devono illuminarsi tutti gli ${n} pezzi della striscia ${set}. Se un pezzo resta spento, riapri e richiudi la clip o controlla la polarità.`;
+  }
+  return w;
+});
