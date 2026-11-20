@@ -5,9 +5,9 @@
 // - listelli: ostacoli parallelepipedi che ombreggiano il percorso fondo/pareti → pannello (test raggio–AABB con 3×3 raggi per patch)
 // - raccolta finale (final gather) del pannello su griglia fine a 8 mm, poi diffusione laterale gaussiana nel pannello (σ = 6 mm)
 // - strisce incollate sotto il pannello: maschera opaca di larghezza pari alla striscia (nessuna trasmissione)
-export const BW = 477.5, BH = 470, HU = 75;
+export const BW = Number(process.env.BW) || 477.5, BH = 470, HU = 75;
 export let RHO = 0.85, RD = 0.40, TD = 0.55;
-const NX = 24, NY = 24, NZ = 4;
+const NX = BW > 600 ? 48 : 24, NY = 24, NZ = 4;
 const dx = BW / NX, dy = BH / NY, dz = HU / NZ;
 
 /* ---------- patch grossolane ---------- */
@@ -63,7 +63,7 @@ for (let i = 0; i < NP; i++) for (let j = 0; j < NP; j++) {
 }
 
 /* ---------- raccolta finale: griglia fine sul pannello ---------- */
-export const GX = 60, GY = 59, gdx = BW / GX, gdy = BH / GY;
+export const GX = BW > 600 ? 121 : 60, GY = 59, gdx = BW / GX, gdy = BH / GY;
 const GPTS = [];
 for (let j = 0; j < GY; j++) for (let i = 0; i < GX; i++) GPTS.push([(i + .5) * gdx, (j + .5) * gdy, HU]);
 const NG = GPTS.length;
