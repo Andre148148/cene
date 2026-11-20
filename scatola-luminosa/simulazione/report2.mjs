@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import { simulate, lineV, DOWN, UP, BW, BH, HU, GX, GY } from './radiosity.mjs';   // BW=970
 const here = new URL('.', import.meta.url).pathname;
 const zl = JSON.parse(fs.readFileSync(here + 'zone-L.json'));
-const vert = (xs, g, up, len = 444) => { const zbar = HU - g - 8, leds = [], bars = []; for (const x of xs) { leds.push(...lineV(x, len, up ? 1.5 : zbar - 1.2, up ? UP : DOWN)); if (!up) bars.push([x - 5, x + 5, 0, BH, zbar, zbar + 8]); } return { leds, bars, masks: [] }; };
+const vert = (xs, g, up, len = 444) => { const zbar = HU - g - 8, leds = [], bars = []; for (const x of xs) { leds.push(...lineV(x, len, up ? 1.5 : zbar - 1.2, up ? UP : DOWN)); if (!up) bars.push([x - 4, x + 4, 0, BH, zbar, zbar + 8]); } return { leds, bars, masks: [] }; };
 const uni = (n, e) => [...Array(n)].map((_, i) => e + i * (BW - 2 * e) / (n - 1));
 const col = v => { const k = Math.max(0, Math.min(1, v / 1.6)); return `rgb(${Math.round(25 + 230 * k)},${Math.round(28 + 216 * k)},${Math.round(45 + 170 * k)})`; };
 const W = 128, H = W * BH / BW, cell = (x, y, w, h, v) => `<rect x="${x.toFixed(2)}" y="${y.toFixed(2)}" width="${(w + .05).toFixed(2)}" height="${(h + .05).toFixed(2)}" fill="${col(v)}"/>`;
