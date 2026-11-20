@@ -7,7 +7,7 @@ export const C = (x, y, r, f, st = '#222', sw = 0.2) => `<circle cx="${x.toFixed
 export const svg = (w, h, inner) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}mm" height="${h}mm" font-family="DejaVu Sans, Arial, sans-serif">${inner}</svg>`;
 
 /* ------------------------------------------------------------------ geometria delle due soluzioni (coordinate "interne" = dalla faccia interna della parete sinistra) */
-export const GEO = { OL: 1000, OW: 500, T: 15, WH: 80, BASE: 10, DIFF: 5, IL: 970, IW: 470, BAR: 8, STRIPLEN: 444, STRIP_Y0: 13 };
+export const GEO = { OL: 1000, OW: 500, T: 15, WH: 80, BASE: 10, DIFF: 5, IL: 970, IW: 470, BAR: 8, STRIPLEN: 456, STRIP_Y0: 8 };
 export const SOL = {
   A: { id: 'A', nome: 'A · CON traverso centrale', g: 35, lines: [[40, 176, 302, 438], [530, 666, 792, 928].map(x => x)], divider: true, hole: 460 },
   B: { id: 'B', nome: 'B · SENZA traverso', g: 40, lines: [[55, 178, 301, 424], [546, 669, 792, 915]], divider: false, hole: 485 },
@@ -144,7 +144,7 @@ export function schem(stage = 6, { x0 = 0, y0 = 0, w = 170, h = 80 } = {}) {
     // pezzo (verticale)
     const top = y0 + 5, bot = by - 12;
     g += R(x - 3, top, 6, bot - top, on ? COL.strip : 'none', now ? hlC : on ? '#a37a10' : '#aaa', now ? 0.8 : 0.3, on ? '' : 'stroke-dasharray="1 0.8"');
-    g += T(x + 6, (top + bot) / 2, `${nm} · 444 mm`, { size: 2.4, anchor: 'start', fill: now ? '#b05000' : '#555', bold: now, rot: 0 });
+    g += T(x + 6, (top + bot) / 2, `${nm} · 456 mm`, { size: 2.4, anchor: 'start', fill: now ? '#b05000' : '#555', bold: now, rot: 0 });
     if (on) {
       // clip + derivazione
       g += R(x - 2.5, bot, 5, 3.2, '#222', now ? hlC : '#000', now ? 0.7 : 0.1);

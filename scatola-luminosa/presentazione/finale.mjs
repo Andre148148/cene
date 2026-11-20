@@ -23,7 +23,7 @@ const tg = k => k === 'A' ? '<span class="tag tA">A · con traverso</span>' : k 
 
 /* ================================================================== dati simulazione */
 const zl = JSON.parse(fs.readFileSync(path.join(here, '../simulazione/zone-L.json')));
-const SIM = { A: { mm: zl.minmax, cv: zl.cv, eta: zl.eta }, B: { mm: 0.79, cv: 0.048, eta: 0.63 } };
+const SIM = { A: { mm: zl.minmax, cv: zl.cv, eta: zl.eta }, B: { mm: 0.83, cv: 0.042, eta: 0.63 } };
 const pc = v => (v * 100).toFixed(0) + '%';
 
 /* ================================================================== disegni composti */
@@ -80,11 +80,11 @@ prog.push(P('La striscia LED BTF-Lighting FCOB 5 V', `
 <tr><td>Confezione</td><td>set USB da 1 m o 2 m</td></tr></table>
 <p style="margin-top:2mm"><small>Fonte: pagina prodotto sul sito btf-lighting.com. Non sono indicati lumen/m, corrente, spessore e passo di taglio.</small></p></div>
 <div class="col" style="left:150mm;width:135mm"><h2>Cosa ne ricavo per il progetto</h2>
-<ul><li><b>Corrente:</b> 7 W a 5 V = <b>1,4 A al metro</b> (calcolato). Un pezzo da 444 mm assorbe 0,62 A.</li>
-<li><b>Una striscia per zona:</b> 4 × 444 = 1776 mm ≈ 12,4 W ≈ <b>2,5 A</b>. Serve un caricatore 5 V da almeno <b>3 A (15 W)</b> per striscia: due caricatori, uno per zona.</li>
-<li><b>Cadute di tensione:</b> con pezzi da 444 mm alimentati da un'estremità con cavo 0,5 mm² la caduta è di pochi decimi di volt: nessun problema di uniformità.</li>
+<ul><li><b>Corrente:</b> 7 W a 5 V = <b>1,4 A al metro</b> (calcolato). Un pezzo da 456 mm assorbe 0,64 A.</li>
+<li><b>Una striscia per zona:</b> 4 × 456 = 1824 mm ≈ 12,8 W ≈ <b>2,6 A</b>. Serve un caricatore 5 V da almeno <b>3 A (15 W)</b> per striscia: due caricatori, uno per zona.</li>
+<li><b>Cadute di tensione:</b> con pezzi da 456 mm alimentati da un'estremità con cavo 0,5 mm² la caduta è di pochi decimi di volt: nessun problema di uniformità.</li>
 <li><b>Angolo 180°</b>: l'emissione è lambertiana, come nel modello di calcolo.</li>
-<li><b>Taglio:</b> nel progetto uso il passo di taglio da 12 mm che mi hai indicato; verifica sulla tua striscia dove sono i segni di forbice. I pezzi da 444 mm sono 37 passi.</li>
+<li><b>Taglio:</b> nel progetto uso il passo di taglio da 12 mm che mi hai indicato; verifica sulla tua striscia dove sono i segni di forbice. I pezzi da 456 mm sono 38 passi.</li>
 <li><b>Spessore del circuito</b> non indicato: la striscia è sottile, ma lo spessore delle clip (≈ 3–4 mm) va tenuto sotto il listello: nella pianta le clip stanno all'estremità sud del pezzo, dove c'è il margine di 13 mm.</li>
 <li><b>Dimmerabile:</b> il set non include il controller; non è necessario per questo progetto. In alternativa un dimmer PWM 5 V in serie al caricatore.</li></ul>
 <div class="card warn"><b>Da verificare appena arriva:</b> larghezza reale 8 mm, posizione dei segni di taglio, polarità stampata (+5V/GND) e lunghezza del cavo USB del set.</div></div>`));
@@ -99,7 +99,7 @@ prog.push(P('Come ho scelto la configurazione · simulazione', `
 <ul><li>La <b>distanza listello–pannello</b> è decisiva: 0 mm → 28%, 20 mm → 70%, 35–40 mm → ~80%. A 50 mm peggiora di nuovo.</li>
 <li>Le linee vanno <b>staccate dalle pareti</b> (40–55 mm): attaccate al muro illuminano il muro e lasciano il bordo scuro.</li>
 <li>Solo <b>linee parallele equidistanti</b>: orizzontali e cornici concentrano la luce ai bordi.</li>
-<li>4 linee per zona è l'ottimo: 3 danno risultati simili ma meno margine, 5–6 fanno ombre ravvicinate (73% e 58%).</li>
+<li><b>Lunghezza delle linee:</b> più lunghe = meglio (420 → 75%, 444 → 80%, 456 → 84%): per questo le linee usano 456 mm. Pezzi extra con l'avanzo (a terra, sotto listelli corti) peggiorano: 50–70%.</li><li>4 linee per zona è l'ottimo: 3 danno risultati simili ma meno margine, 5–6 fanno ombre ravvicinate (73% e 58%).</li>
 <li>Led a terra rivolti verso l'alto: +25% di luce ma 73% / 6,8%: meno uniforme.</li>
 <li>Robustezza: pareti ρ 0,80–0,90 e pannello più/meno trasparente → 76–82%.</li></ul>
 <p><small>"Zona scura/chiara" = punto più scuro / più chiaro (più alto è meglio). "Variazione" = dispersione (più bassa è meglio). "Resa" = luce LED che esce dal pannello.</small></p></div>
@@ -115,7 +115,7 @@ const solPage = (k, title, body, secXmax) => P(title, `
 <div class="col" style="left:126mm;top:122mm;width:159mm">${body}</div>`);
 prog.push(solPage('A', 'Soluzione A · CON traverso centrale', `<ul style="font-size:3.1mm">
 <li><b>Linee:</b> centri a 40 · 176 · 302 · 438 mm dalla parete esterna; destra specchiata (532 · 668 · 794 · 930 dalla parete sinistra).</li>
-<li><b>Listelli</b> 8×8 × 469 mm, cima a <b>40 mm dal bordo superiore del muro</b> (= 35 mm sotto il pannello). Striscia da 444 mm incollata sotto, 13 mm di margine dalle pareti lunghe.</li>
+<li><b>Listelli</b> 8×8 × 469 mm, cima a <b>40 mm dal bordo superiore del muro</b> (= 35 mm sotto il pannello). Striscia da 456 mm incollata sotto: 8 mm di margine dal lato clip (sud) e 6 mm dal lato nord.</li>
 <li><b>Traverso</b> 15 × 75 mm (rifilato da una doga 15×80): la faccia superiore a 85 mm sostiene il pannello.</li>
 <li><b>Foro H</b> Ø16 nella parete sud (x = 460); foro Ø16 nel traverso (a 25 mm dalla parete sud) per il cavo della zona destra.</li>
 <li><b>Fermi pannello:</b> 10 pezzi, faccia superiore a 85 mm. <b>Pannello:</b> 2 pezzi 476 × 468 mm, oppure 1 da 968 × 468 (la zona spenta si illumina un po' per diffusione).</li></ul>`));
@@ -124,7 +124,7 @@ prog.push(solPage('B', 'Soluzione B · SENZA traverso', `<ul style="font-size:3.
 <li><b>Listelli</b> 8×8 × 469 mm, cima a <b>45 mm dal bordo superiore del muro</b> (= 40 mm sotto il pannello). Striscia 1: le 4 linee di sinistra; striscia 2: le 4 di destra.</li>
 <li><b>Foro H</b> Ø16 nella parete sud a metà (x = 485): le due spine escono dallo stesso foro, un cavo verso sinistra e uno verso destra.</li>
 <li><b>Fermi pannello:</b> 8 pezzi (6 sulle pareti lunghe, 2 sulle corte). <b>Pannello:</b> 968 × 468 mm in un solo pezzo.</li>
-<li>Alternativa più semplice: 6 linee (3+3) a 85 mm dalle pareti → 74% / 5,0%.</li></ul>`));
+<li>Alternativa più semplice: 6 linee (3+3) a 85 mm dalle pareti → 78% / 4,3%.</li></ul>`));
 
 // 6. taglio + schema
 const cutSvg = (() => { let g = '';
@@ -132,10 +132,10 @@ const cutSvg = (() => { let g = '';
   const s = 270 / 2000, x0 = 6, y0 = 12; let cx = x0;
   g += R(x0, y0, 2000 * s, 8, '#fff', '#222', 0.3);
   g += R(cx, y0, 8 * s, 8, '#b8c0c8', '#222', 0.3) + T(cx + 10, y0 - 1.2, 'cavo USB', { size: 2.2, anchor: 'start' }); cx += 8 * s;
-  ['P1', 'P2', 'P3', 'P4'].forEach(n => { g += R(cx, y0, 444 * s, 8, COL.strip, '#a37a10', 0.4) + T(cx + 444 * s / 2, y0 + 5, n + ' · 444', { size: 2.6, bold: true }); cx += 444 * s; });
-  g += R(cx, y0, 216 * s, 8, '#eee', '#999', 0.3, 'stroke-dasharray="1 .8"') + T(cx + 216 * s / 2, y0 + 5, 'avanzo 216', { size: 2.3, fill: '#666' });
+  ['P1', 'P2', 'P3', 'P4'].forEach(n => { g += R(cx, y0, 456 * s, 8, COL.strip, '#a37a10', 0.4) + T(cx + 456 * s / 2, y0 + 5, n + ' · 456', { size: 2.6, bold: true }); cx += 456 * s; });
+  g += R(cx, y0, 168 * s, 8, '#eee', '#999', 0.3, 'stroke-dasharray="1 .8"') + T(cx + 168 * s / 2, y0 + 5, 'avanzo 168', { size: 2.3, fill: '#666' });
   g += L(x0 + 8 * s, y0 + 8, x0 + 8 * s, y0 + 12, '#c33', 0.4) + T(x0 + 8 * s + 1, y0 + 14.5, 'taglia qui il cavo (al primo segno di forbice utile)', { size: 2.2, anchor: 'start', fill: '#c33' });
-  g += T(x0, y0 + 24, '1776 mm usati = 37 passi × 4 pezzi (passo di taglio 12 mm) · 216 mm di avanzo: tienili come pezzo di ricambio/prova', { size: 2.5, anchor: 'start', fill: '#333' });
+  g += T(x0, y0 + 24, '1824 mm usati = 38 passi × 4 pezzi (passo di taglio 12 mm) · 168 mm di avanzo per striscia (336 mm in tutto): tienili come ricambio/prova. Aggiungere pezzi extra peggiora l\'uniformità (vedi pag. 3)', { size: 2.5, anchor: 'start', fill: '#333' });
   return svg(285, 38, g); })();
 prog.push(P('Taglio della striscia e schema elettrico (per ogni striscia)', `
 <div class="col" style="left:0;width:285mm;height:38mm">${cutSvg}</div>
@@ -230,11 +230,11 @@ TUT.push(stepPage(7, 'Vernicia tutto di bianco opaco', `<p>${tg('AB')}Due mani d
   planBoth(['walls', 'divider', 'stops', 'bars'], ['walls', 'divider', 'bars', 'floor']),
   'bianco uniforme, senza zone lucide; nastro rimosso dopo l\'ultima mano.'));
 
-TUT.push(stepPage(8, 'Prepara le strisce a banco', `<p>${tg('AB')}Per <b>ogni striscia da 2 m</b> (4 pezzi da 444 mm):</p>
-<ol><li>Taglia il cavo USB dalla striscia all'attaccatura.</li><li>Taglia 4 pezzi da <b>444 mm</b> (37 passi) sui segni di forbice. Numerali P1…P4 sul retro.</li><li>Spela i due fili del cavo USB (5 mm).</li></ol>
-<p>L'avanzo di 216 mm serve come ricambio o per prove.</p>`,
-  fig(175, 60, (() => { let g = T(2, 5, 'Una striscia da 2 m', { size: 3, anchor: 'start', bold: true }); const s = 168 / 2000; let cx = 3; g += R(cx, 12, 8 * s, 8, '#b8c0c8', '#222', 0.3); cx += 8 * s; ['P1', 'P2', 'P3', 'P4'].forEach(n => { g += R(cx, 12, 444 * s, 8, COL.strip, '#a37a10', 0.4) + T(cx + 444 * s / 2, 17, n, { size: 3, bold: true }); cx += 444 * s; }); g += R(cx, 12, 216 * s, 8, '#eee', '#999', 0.3, 'stroke-dasharray="1 .8"') + T(cx + 216 * s / 2, 17, 'avanzo', { size: 2.4 }); g += T(3, 30, 'Taglia solo sui segni di forbice.  Ripeti per la seconda striscia.', { size: 2.8, anchor: 'start' }); return g; })()),
-  'i 4 pezzi sono lunghi uguale (444 mm) e numerati.'));
+TUT.push(stepPage(8, 'Prepara le strisce a banco', `<p>${tg('AB')}Per <b>ogni striscia da 2 m</b> (4 pezzi da 456 mm):</p>
+<ol><li>Taglia il cavo USB dalla striscia all'attaccatura.</li><li>Taglia 4 pezzi da <b>456 mm</b> (38 passi) sui segni di forbice. Numerali P1…P4 sul retro.</li><li>Spela i due fili del cavo USB (5 mm).</li></ol>
+<p>L'avanzo (168 mm per striscia) serve come ricambio o per prove: usarlo come pezzi extra peggiora l'uniformità.</p>`,
+  fig(175, 60, (() => { let g = T(2, 5, 'Una striscia da 2 m', { size: 3, anchor: 'start', bold: true }); const s = 168 / 2000; let cx = 3; g += R(cx, 12, 8 * s, 8, '#b8c0c8', '#222', 0.3); cx += 8 * s; ['P1', 'P2', 'P3', 'P4'].forEach(n => { g += R(cx, 12, 456 * s, 8, COL.strip, '#a37a10', 0.4) + T(cx + 456 * s / 2, 17, n, { size: 3, bold: true }); cx += 456 * s; }); g += R(cx, 12, 168 * s, 8, '#eee', '#999', 0.3, 'stroke-dasharray="1 .8"') + T(cx + 168 * s / 2, 17, 'avanzo', { size: 2.4 }); g += T(3, 30, 'Taglia solo sui segni di forbice.  Ripeti per la seconda striscia.', { size: 2.8, anchor: 'start' }); return g; })()),
+  'i 4 pezzi sono lunghi uguale (456 mm) e numerati.'));
 
 TUT.push(stepPage(9, 'Clip e prova di ogni pezzo', `<p>${tg('AB')}Monta una <b>clip 2 pin</b> sul bordo del pad di ogni pezzo (sull'estremità che andrà a sud) e cavetto di ~40 mm.</p>
 <ol><li>Apri la clip, infila la striscia con i pad sui contatti, chiudi.</li><li>Rispetta il + : filo rosso sul pad "+5V".</li><li>Collega temporaneamente la clip al cavo USB (rosso+nero) e al caricatore: il pezzo si accende uniforme.</li></ol>
@@ -243,7 +243,7 @@ TUT.push(stepPage(9, 'Clip e prova di ogni pezzo', `<p>${tg('AB')}Monta una <b>c
   'ogni pezzo si accende su tutta la lunghezza, senza zone spente.'));
 
 TUT.push(stepPage(10, 'Incolla le strisce sotto i listelli', `<p>${tg('AB')}Stacca la protezione dell'adesivo e incolla ogni pezzo sulla <b>fascia da 8 mm sotto il listello</b>, con i LED rivolti in basso.</p>
-<ul><li>Il bordo <b>sud</b> del pezzo (clip) a <b>13 mm</b> dal muro sud; l'altro bordo finisce a 13 mm dal muro nord: 444 mm centrati nei 470.</li><li>Tutti i pezzi con il + verso sud.</li><li>Premi per 20 s lungo tutta la lunghezza.</li></ul>`,
+<ul><li>Il bordo <b>sud</b> del pezzo (lato clip) a <b>8 mm</b> dal muro sud; il pezzo finisce a 6 mm dal muro nord: 456 mm nei 470.</li><li>Tutti i pezzi con il + verso sud.</li><li>Premi per 20 s lungo tutta la lunghezza.</li></ul>`,
   planFig('A', { layers: ['walls', 'divider', 'stops', 'strips', 'bars', 'hole'], hl: ['strips'] }),
   'strisce dritte e centrate sotto i listelli, nessuna piegatura.'));
 
@@ -282,7 +282,7 @@ TUT.push(stepPage(14, 'Prova finale e regolazioni', `<p>${tg('AB')}Accendi in un
 
 TUT.push(Q('Passo 15 · Sicurezza (bambini) e manutenzione', `
 <div class="col" style="left:0;width:138mm"><h2>Sicurezza</h2><ul><li>Bassissima tensione (5 V): niente rischio di scossa, ma usa caricatori certificati.</li><li>I led scaldano poco, ma non coprire il pannello con tessuti.</li><li>Pannello fissato (viti/silicone) e cavi con fermo di trazione.</li><li>Spigoli levigati, cavi non raggiungibili.</li></ul></div>
-<div class="col" style="left:148mm;width:137mm"><h2>Manutenzione</h2><ul><li>Pulisci il pannello con un panno umido (niente solventi: opacizzano l'acrilico).</li><li>Se una striscia si spegne: ricontrolla la clip del pezzo e la derivazione.</li><li>Tieni l'avanzo di striscia (216 mm) come ricambio.</li></ul></div>`));
+<div class="col" style="left:148mm;width:137mm"><h2>Manutenzione</h2><ul><li>Pulisci il pannello con un panno umido (niente solventi: opacizzano l'acrilico).</li><li>Se una striscia si spegne: ricontrolla la clip del pezzo e la derivazione.</li><li>Tieni l'avanzo di striscia (168 mm) come ricambio.</li></ul></div>`));
 
 TUT.push(Q('Passo 16 · Riepilogo veloce', `
 <div class="col" style="left:0;width:285mm"><table><tr><th>#</th><th>Cosa</th><th>${tg('A')}</th><th>${tg('B')}</th></tr>
@@ -292,8 +292,8 @@ TUT.push(Q('Passo 16 · Riepilogo veloce', `
 <tr><td>4</td><td>Fori</td><td>H a x = 460 + foro nel traverso</td><td>H a x = 485</td></tr>
 <tr><td>5</td><td>Fermi pannello</td><td>10</td><td>8</td></tr>
 <tr><td>6–7</td><td>Listelli, vernice</td><td colspan="2">colla sul legno nudo → poi bianco opaco, fascia sotto il listello mascherata</td></tr>
-<tr><td>8–9</td><td>Strisce</td><td colspan="2">4 × 444 mm per striscia, clip, prova a banco</td></tr>
-<tr><td>10–12</td><td>Incollaggio e cablaggio</td><td colspan="2">13 mm di margine; dorsale sud; caricatore 5 V ≥ 3 A per striscia</td></tr>
+<tr><td>8–9</td><td>Strisce</td><td colspan="2">4 × 456 mm per striscia, clip, prova a banco</td></tr>
+<tr><td>10–12</td><td>Incollaggio e cablaggio</td><td colspan="2">margine 8 mm (clip, sud) / 6 mm (nord); dorsale sud; caricatore 5 V ≥ 3 A per striscia</td></tr>
 <tr><td>13–14</td><td>Pannello e prova</td><td>2 pannelli 476×468 o 1 da 968×468</td><td>1 pannello 968×468</td></tr></table></div>`));
 
 fs.writeFileSync(path.join(here, 'finale-tutorial.html'), doc('Tutorial di montaggio', TUT));
