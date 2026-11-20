@@ -8,11 +8,15 @@ const mk = (l, k) => { const [ln, m] = key(l, k); return { cfg: build(LAY[ln], m
 // configurazioni da mostrare
 const designs = [];
 const add = (title, sub, cfg, kind) => { const r = simulate(cfg); designs.push({ title, sub, r, kind, cfg }); };
-let d = mk('L1', 0); add('A · Come proposto prima', 'cornice + 2 centrali, listelli a ridosso del pannello (0 mm)', d.cfg, 'down');
-d = mk('L16', 1); add('B · Listelli a 10 mm', '4 linee verticali uniformi', d.cfg, 'down');
-d = mk('L16', 3); add('C · Listelli a 20 mm (CONSIGLIATA)', '4 linee verticali uniformi da parete a parete', d.cfg, 'down');
-d = mk('L5', 3); add('D · Come C + 2 tratti H 108', 'usa tutta la striscia (2016 mm)', d.cfg, 'down');
-d = mk('L12', 4); add('E · A terra verso l\'alto, 5 linee', 'senza listelli: più luce, meno uniforme', d.cfg, 'up');
+const BARW = 10, BARH = 8;
+const mkv = (xs, g, len = 444) => { const zbar = HU - g - BARH, z = zbar - 1.2, leds = [], bars = []; for (const x of xs) { leds.push(...lineV(x, len, z, DOWN)); bars.push([x - BARW / 2, x + BARW / 2, 0, BH, zbar, zbar + BARH]); } return { leds, bars, masks: [] }; };
+const mku = (xs, len = 444) => { const leds = []; for (const x of xs) leds.push(...lineV(x, len, 1.5, UP)); return { leds, bars: [], masks: [] }; };
+const uni = (n, e) => [...Array(n)].map((_, i) => e + i * (BW - 2 * e) / (n - 1));
+add('A · Come proposto prima', 'cornice + 2 centrali, listelli a ridosso del pannello (0 mm)', mk('L1', 0).cfg, 'down');
+add('B · 4 linee a ridosso delle pareti', 'listelli a 30 mm dal pannello, linee a 5 mm dalle pareti', mkv(uni(4, 5), 30), 'down');
+add('C · 4 linee, listelli a 20 mm', 'linee a 50 mm dalle pareti', mkv(uni(4, 50), 20), 'down');
+add('D · 4 linee, listelli a 30 mm (CONSIGLIATA)', 'linee a 40 mm dalle pareti (x = 40, 172, 305, 437)', mkv(uni(4, 40), 30), 'down');
+add('E · A terra verso l\'alto, 4 linee', 'senza listelli: più luce, meno uniforme', mku(uni(4, 60)), 'up');
 fs.writeFileSync(here + 'report-data.json', JSON.stringify(designs.map(x => ({ title: x.title, sub: x.sub, minmax: x.r.minmax, cv: x.r.cv, eta: x.r.eta, flux: x.r.flux }))));
 // SVG delle mappe
 const col = v => { const k = Math.max(0, Math.min(1, v / 1.6)); const r = Math.round(25 + 230 * k), g = Math.round(28 + 216 * k), b = Math.round(45 + 170 * k); return `rgb(${r},${g},${b})`; };
