@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+const rows = JSON.parse(fs.readFileSync(process.argv[2] || 'scan.json', 'utf8'));
+const fmt = r => `${r.layout.padEnd(46)} | ${r.mount.padEnd(52)} | min/max ${(r.minmax * 100).toFixed(0).padStart(3)}%  CV ${(r.cv * 100).toFixed(1).padStart(5)}%  resa ${(r.eta * 100).toFixed(0).padStart(3)}%  luce ${r.light.toFixed(0).padStart(4)}  ${r.len} mm`;
+console.log('N configurazioni:', rows.length);
+console.log('\n=== TOP 15 per CV (più bassa = più uniforme) ===');
+[...rows].sort((a, b) => a.cv - b.cv).slice(0, 15).forEach(r => console.log(fmt(r)));
+console.log('\n=== TOP 10 per min/max ===');
+[...rows].sort((a, b) => b.minmax - a.minmax).slice(0, 10).forEach(r => console.log(fmt(r)));
+console.log('\n=== migliore per ogni tipo di montaggio (per CV) ===');
+const by = {}; rows.forEach(r => { const k = r.kind + (r.kind === 'down' ? ' ' + r.mount.match(/a (\d+) mm/)?.[1] : ''); if (!by[k] || r.cv < by[k].cv) by[k] = r; });
+Object.entries(by).forEach(([k, r]) => console.log(k.padEnd(10), fmt(r)));
