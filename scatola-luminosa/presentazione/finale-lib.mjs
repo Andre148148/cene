@@ -9,11 +9,11 @@ export const svg = (w, h, inner) => `<svg xmlns="http://www.w3.org/2000/svg" vie
 /* ------------------------------------------------------------------ geometria delle due soluzioni (coordinate "interne" = dalla faccia interna della parete sinistra) */
 export const GEO = { OL: 1000, OW: 500, T: 15, WH: 80, BASE: 10, DIFF: 5, IL: 970, IW: 470, BAR: 8, STRIPLEN: 456, STRIP_Y0: 7 };
 export const SOL = {
-  A: { id: 'A', nome: 'A · CON traverso centrale', g: 35, lines: [[40, 176, 302, 438], [530, 666, 792, 928].map(x => x)], divider: true, hole: 460 },
-  B: { id: 'B', nome: 'B · SENZA traverso', g: 40, lines: [[55, 178, 301, 424], [546, 669, 792, 915]], divider: false, hole: 485 },
+  A: { id: 'A', nome: 'A · CON traverso centrale', g: 35, lines: [[60, 179, 298, 418], [0, 0, 0, 0]], divider: true, hole: 460 },
+  B: { id: 'B', nome: 'B · SENZA traverso', g: 40, lines: [[61, 182, 303, 424], [546, 667, 788, 909]], divider: false, hole: 485 },
 };
 // A: zona destra specchiata: x_int = 970 - x_zona; verificato sotto
-SOL.A.lines[1] = [970 - 438, 970 - 302, 970 - 176, 970 - 40];            // 532, 668, 794, 930
+SOL.A.lines[1] = [970 - 418, 970 - 298, 970 - 179, 970 - 60];            // 552, 672, 791, 910
 export const allLines = s => [...SOL[s].lines[0], ...SOL[s].lines[1]];
 
 const COL = { mdf: '#e6cfa6', wall: '#d9a964', wallS: '#9b7433', floor: '#f7f6f1', bar: '#c9955a', strip: '#f2b823', stripL: '#ffe699', panel: '#b9dcf2', red: '#d01010', blk: '#111', org: '#e07000', ok: '#1a8a3a' };

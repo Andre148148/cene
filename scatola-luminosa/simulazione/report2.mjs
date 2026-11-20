@@ -13,7 +13,7 @@ const heatZones = (x0, y0) => { const L = zl.L, m = L.reduce((a, b) => a + b, 0)
 const D = [];
 const add = (t, sub, r, draw) => D.push({ t, sub, r, draw });
 add('A · CON traverso centrale (2 zone da 4 linee)', 'listelli a 35 mm dal pannello, linee a x = 40, 176, 302, 438 mm da ogni parete esterna', { minmax: zl.minmax, cv: zl.cv, eta: zl.eta }, (x, y) => heatZones(x, y));
-let r = simulate(vert(uni(8, 55), 40, false)); add('B · SENZA traverso, 8 linee (4+4)', 'listelli a 40 mm, linee a 55 mm dalle pareti, passo 123 mm', r, (x, y) => heatFull(r.L, x, y));
+let r = simulate(vert([61, 182, 303, 424, 546, 667, 788, 909], 40, false)); add('B · SENZA traverso, 8 linee (4+4)', 'listelli a 40 mm, linee a mezza campata dalle pareti (61 mm), passo 121 mm', r, (x, y) => heatFull(r.L, x, y));
 r = simulate(vert(uni(6, 85), 40, false)); const r6 = r; add('C · SENZA traverso, 6 linee (3+3)', 'listelli a 40 mm, linee a 85 mm dalle pareti, passo 160 mm', r6, (x, y) => heatFull(r6.L, x, y));
 const r9 = simulate(vert(uni(9, 45), 0, true, 432)); add('D · SENZA traverso, led a terra verso l\'alto, 9 linee', 'senza listelli: più luce (resa +25%), un po\' meno uniforme', r9, (x, y) => heatFull(r9.L, x, y));
 let g = `<text x="12" y="12" font-size="4.2" font-weight="700" fill="#111">Mappe di luminosità sul pannello 970 × 470 mm – colore = luce relativa alla media di ogni mappa</text>`;
