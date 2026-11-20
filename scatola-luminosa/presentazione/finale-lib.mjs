@@ -7,7 +7,7 @@ export const C = (x, y, r, f, st = '#222', sw = 0.2) => `<circle cx="${x.toFixed
 export const svg = (w, h, inner) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}mm" height="${h}mm" font-family="DejaVu Sans, Arial, sans-serif">${inner}</svg>`;
 
 /* ------------------------------------------------------------------ geometria delle due soluzioni (coordinate "interne" = dalla faccia interna della parete sinistra) */
-export const GEO = { OL: 1000, OW: 500, T: 15, WH: 80, BASE: 10, DIFF: 5, IL: 970, IW: 470, BAR: 8, STRIPLEN: 456, STRIP_Y0: 8 };
+export const GEO = { OL: 1000, OW: 500, T: 15, WH: 80, BASE: 10, DIFF: 5, IL: 970, IW: 470, BAR: 8, STRIPLEN: 456, STRIP_Y0: 7 };
 export const SOL = {
   A: { id: 'A', nome: 'A · CON traverso centrale', g: 35, lines: [[40, 176, 302, 438], [530, 666, 792, 928].map(x => x)], divider: true, hole: 460 },
   B: { id: 'B', nome: 'B · SENZA traverso', g: 40, lines: [[55, 178, 301, 424], [546, 669, 792, 915]], divider: false, hole: 485 },
@@ -43,7 +43,7 @@ export function plan(sol, { x0 = 0, y0 = 0, s = 0.26, layers = [], hl = [], dims
   }
   if (lay.has('bus')) g += busPlan(sol, X, Y, s, H.has('bus'));
   if (lay.has('hole')) { const hx = S.hole + G.T; g += R(X(hx - 8), Y(G.T), 16 * s, G.T * s, '#fff', H.has('hole') ? COL.org : '#c33', H.has('hole') ? 0.8 : 0.4) + T(X(hx), Y(-5), 'H Ø16', { size: 2.4, bold: true, fill: '#c33' });
-    if (S.divider) { g += R(X(G.OL / 2 - 8), Y(G.T + 33), 16 * s, 16 * s, '#fff', H.has('hole') ? COL.org : '#c33', 0.4) + T(X(G.OL / 2), Y(G.T + 36) - 2.2, 'foro', { size: 2, fill: '#c33' }); } }
+    if (S.divider) { g += R(X(G.OL / 2 - 8), Y(G.T + 20), 16 * s, 16 * s, '#fff', H.has('hole') ? COL.org : '#c33', 0.4); } }
   if (lay.has('panel')) g += R(X(G.T + 1), Y(G.OW - G.T - 1), (G.IL - 2) * s, (G.IW - 2) * s, 'rgba(160,210,240,0.55)', COL.org, 0.5);
   if (dims) g += planDims(sol, X, Y, s);
   return g;
@@ -55,14 +55,18 @@ export const stopPos = sol => {                                                /
   if (SOL[sol].divider) { a.push([T + 4, G.OW / 2], [G.OL - T - 4, G.OW / 2]); } else { a.push([T + 4, G.OW / 2], [G.OL - T - 4, G.OW / 2]); }
   return a;
 };
-function busPlan(sol, X, Y, s, hl) {
+function busPlan(sol, X, Y, s, hl) {                                              // catena testa-coda alimentata dal centro (nodo a sud tra P2 e P3)
   const G = GEO, T = G.T, S = SOL[sol], col = hl ? COL.org : '#6a2a00'; let g = '';
+  const ys = T + G.STRIP_Y0, yn = T + G.STRIP_Y0 + G.STRIPLEN, hx = S.hole + T;
   S.lines.forEach((ln, zi) => {
-    const nodeX = zi === 0 ? S.hole + T : (S.divider ? G.OL / 2 + 22 : S.hole + T + 14), xs = ln.map(x => x + T), by = T + 7;
-    const xa = Math.min(nodeX, ...xs), xb = Math.max(nodeX, ...xs);
-    g += L(X(xa), Y(by), X(xb), Y(by), col, 0.9);
-    xs.forEach(x => { g += L(X(x), Y(by), X(x), Y(T + G.STRIP_Y0), col, 0.6) + C(X(x), Y(by), 0.8, '#fff', col, 0.3); });
-    g += C(X(nodeX), Y(by), 1.2, col, '#000', 0.3);
+    const xs = ln.map(x => x + T), nodeX = (xs[1] + xs[2]) / 2, o = zi === 0 ? 1.1 : -1.1;
+    // sud: nodo → P2 e P3
+    g += L(X(xs[1]), Y(ys - 3), X(xs[2]), Y(ys - 3), col, 0.9) + L(X(xs[1]), Y(ys), X(xs[1]), Y(ys - 3), col, 0.7) + L(X(xs[2]), Y(ys), X(xs[2]), Y(ys - 3), col, 0.7) + C(X(nodeX), Y(ys - 3), 1.2, col, '#000', 0.3);
+    // nord: P2–P1 e P3–P4
+    g += L(X(xs[0]), Y(yn + 3), X(xs[1]), Y(yn + 3), col, 0.9) + L(X(xs[0]), Y(yn), X(xs[0]), Y(yn + 3), col, 0.7) + L(X(xs[1]), Y(yn), X(xs[1]), Y(yn + 3), col, 0.7);
+    g += L(X(xs[2]), Y(yn + 3), X(xs[3]), Y(yn + 3), col, 0.9) + L(X(xs[2]), Y(yn), X(xs[2]), Y(yn + 3), col, 0.7) + L(X(xs[3]), Y(yn), X(xs[3]), Y(yn + 3), col, 0.7);
+    // cavo USB: dal nodo al foro H lungo il pavimento (y = 12 mm dalla parete)
+    const yl = T + 12 + o; g += L(X(nodeX), Y(ys - 3), X(nodeX), Y(yl), col, 0.7, 'stroke-dasharray="1.2 .8"') + L(X(nodeX), Y(yl), X(hx), Y(yl), col, 0.7, 'stroke-dasharray="1.2 .8"') + L(X(hx), Y(yl), X(hx), Y(T - 4), col, 0.7, 'stroke-dasharray="1.2 .8"');
   });
   return g;
 }
@@ -98,11 +102,11 @@ export function section(sol, { x0 = 0, y0 = 0, s = 0.55, xmax = 520, fromLeft = 
   const inner = G.T;                                                                        // x interno = 15
   g += R(X(inner), Z(zD + 0.0), (xmax - inner) * s, G.IW * 0 + 0, 'none', 'none');          // placeholder
   g += R(X(inner), Z(zD), (xmax - inner) * s, (zD - G.BASE) * s, COL.floor, 'none', 0);      // cavità
-  if (S.divider) { const dx = G.OL / 2 - G.T / 2; g += R(X(dx), Z(zD), G.T * s, (zD - G.BASE) * s, COL.wall, '#555', 0.25); }
+  if (S.divider && G.OL / 2 - G.T / 2 < xmax) { const dx = G.OL / 2 - G.T / 2; g += R(X(dx), Z(zD), G.T * s, (zD - G.BASE) * s, COL.wall, '#555', 0.25); }
   // pannello
-  const pEnd = S.divider ? G.OL / 2 - G.T / 2 : xmax;
+  const pEnd = S.divider ? Math.min(G.OL / 2 - G.T / 2, xmax) : xmax;
   g += R(X(inner), Z(zTop), (pEnd - inner) * s, G.DIFF * s, COL.panel, '#4a8db0', 0.3);
-  if (S.divider) { g += R(X(G.OL / 2 + G.T / 2), Z(zTop), (xmax - (G.OL / 2 + G.T / 2)) * s, G.DIFF * s, COL.panel, '#4a8db0', 0.3); }
+  if (S.divider && G.OL / 2 + G.T / 2 < xmax) { g += R(X(G.OL / 2 + G.T / 2), Z(zTop), (xmax - (G.OL / 2 + G.T / 2)) * s, G.DIFF * s, COL.panel, '#4a8db0', 0.3); }
   const xs = allLines(sol).map(x => x + G.T).filter(x => x < xmax - 5);
   xs.forEach(x => {
     g += R(X(x - 4), Z(zBarTop), 8 * s, 8 * s, COL.bar, H.has('bars') ? COL.org : '#6a4a20', H.has('bars') ? 0.7 : 0.25);
@@ -155,5 +159,35 @@ export function schem(stage = 6, { x0 = 0, y0 = 0, w = 170, h = 80 } = {}) {
     } else g += T(x, bot + 4, 'da fare', { size: 1.9, fill: '#aaa' });
   });
   if (stage === 6) { g += T(x0 + w / 2, y0 + 2.4, 'Collega la spina al caricatore 5 V ≥ 3 A: tutti e 4 i pezzi si accendono', { size: 2.6, bold: true, fill: COL.ok }); }
+  return g;
+}
+
+export const secSvg = (sol, { xmax = 250, s = 0.5, showRays = true, hl = [] } = {}) => svg(+(xmax * s + 44).toFixed(1), +(95 * s + 6).toFixed(1), section(sol, { x0: 2, y0: 2, s, xmax, showRays, hl }));
+
+/* ------------------------------------------------------------------ SCHEMA DI UNA STRISCIA, CATENA TESTA-CODA ALIMENTATA DAL CENTRO
+   stage 0: cavo USB + nodo · 1: P2 · 2: P3 · 3: P1 (via P2) · 4: P4 (via P3) · 5: collaudo */
+export function schemChain(stage = 5, { x0 = 0, y0 = 0, w = 170, h = 80 } = {}) {
+  let g = '';
+  const px = [0.34, 0.50, 0.66, 0.82].map(f => x0 + f * w), top = y0 + 17, bot = y0 + h - 15, hl = COL.org;
+  const lit = [stage >= 3 || stage === 5, stage >= 1, stage >= 2, stage >= 4 || stage === 5];
+  if (stage === 5) lit[0] = lit[1] = lit[2] = lit[3] = true;
+  const now = [stage === 3, stage === 1, stage === 2, stage === 4];
+  const nodeX = (px[1] + px[2]) / 2, ny = bot + 8;
+  // spina e cavo
+  g += R(x0 + 0.5, ny - 4.5, 8, 9, '#cfd8e0', stage === 0 ? hl : '#445', stage === 0 ? 0.7 : 0.3) + T(x0 + 4.5, ny - 6, 'USB', { size: 2.4, bold: true });
+  g += L(x0 + 8.5, ny - 1.2, nodeX, ny - 1.2, COL.red, 0.7) + L(x0 + 8.5, ny + 1.2, nodeX, ny + 1.2, COL.blk, 0.7) + C(nodeX, ny, 1.6, '#222', stage === 0 ? hl : '#000', stage === 0 ? 0.7 : 0.2) + T(nodeX, ny + 6, 'nodo (al centro)', { size: 2.1 });
+  g += T(x0 + 10, ny - 3.6, 'cavo USB tagliato', { size: 1.9, anchor: 'start', fill: '#555' });
+  ['P1', 'P2', 'P3', 'P4'].forEach((nm, i) => {
+    const x = px[i], on = lit[i];
+    g += R(x - 3, top, 6, bot - top, on ? COL.strip : 'none', now[i] ? hl : on ? '#a37a10' : '#aaa', now[i] ? 0.8 : 0.3, on ? '' : 'stroke-dasharray="1 .8"');
+    g += T(x, top - 9, nm + ' · 456', { size: 2.2, bold: now[i], fill: now[i] ? '#b05000' : '#555' });
+  });
+  const cl = (x, y, nw) => R(x - 2.5, y, 5, 3, '#222', nw ? hl : '#000', nw ? 0.7 : 0.1);
+  // sud: nodo → P2, P3
+  [1, 2].forEach(i => { if (stage >= i || stage === 5) { const nw = stage === i, x = px[i]; g += cl(x, bot, nw) + L(x - 0.8, bot + 3, x - 0.8, ny - 1.2, nw ? hl : COL.red, nw ? 1.2 : 0.5) + L(x + 0.8, bot + 3, x + 0.8, ny + 1.2, nw ? hl : COL.blk, nw ? 1.2 : 0.5); } });
+  // nord: P2–P1, P3–P4
+  [[1, 0, 3], [2, 3, 4]].forEach(([a, b, st]) => { if (stage >= st || stage === 5) { const nw = stage === st, ya = top - 5; g += cl(px[a], top - 3, false) + cl(px[b], top - 3, nw) + L(px[a], top - 3, px[a], ya, nw ? hl : '#333', 0.5) + L(px[b], top - 3, px[b], ya, nw ? hl : '#333', 0.5) + L(px[a], ya, px[b], ya, nw ? hl : '#333', nw ? 1.2 : 0.6); } });
+  if (stage === 5) g += T(x0 + w / 2, y0 + 3, 'Spina nel caricatore 5 V ≥ 3 A: si accendono tutti e 4 i pezzi', { size: 2.6, bold: true, fill: COL.ok });
+  g += T(x0 + w - 2, ny + 6, 'sud', { size: 2, anchor: 'end', fill: '#888' }) + T(x0 + w - 2, y0 + 3, 'nord', { size: 2, anchor: 'end', fill: '#888' });
   return g;
 }

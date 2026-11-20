@@ -20,5 +20,6 @@ let g = `<text x="12" y="12" font-size="4.2" font-weight="700" fill="#111">Mappe
 D.forEach((x, i) => { const cx = 12 + (i % 2) * 143, cy = 28 + Math.floor(i / 2) * 82;
   g += `<text x="${cx}" y="${cy - 3}" font-size="3.3" font-weight="700" fill="#111">${x.t}</text>` + x.draw(cx, cy);
   g += `<text x="${cx}" y="${(cy + H + 4.5).toFixed(1)}" font-size="2.8" fill="#333">zona scura/chiara ${(x.r.minmax * 100).toFixed(0)}% · variazione ${(x.r.cv * 100).toFixed(1)}% · resa ${(x.r.eta * 100).toFixed(0)}%</text><text x="${cx}" y="${(cy + H + 8.5).toFixed(1)}" font-size="2.4" fill="#666">${x.sub}</text>`; });
+fs.writeFileSync(here + 'mappa-B.json', JSON.stringify({ L: Array.from(D[1].r.L), GX, GY, minmax: D[1].r.minmax, cv: D[1].r.cv, eta: D[1].r.eta }));
 fs.writeFileSync(here + 'report2.html', `<!DOCTYPE html><html><body style="margin:0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 297 210" width="1600" height="1131" font-family="DejaVu Sans, Arial, sans-serif"><rect width="297" height="210" fill="#fff"/>${g}</svg></body></html>`);
 console.log(D.map(x => `${x.t}: ${(x.r.minmax * 100).toFixed(0)}/${(x.r.cv * 100).toFixed(1)}/${(x.r.eta * 100).toFixed(0)}`).join('\n'));
