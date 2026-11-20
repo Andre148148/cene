@@ -1,0 +1,12 @@
+import { simulate, lineV, DOWN, BW, BH, HU, GX, GY } from './radiosity.mjs';
+const g = 35, zbar = HU - g - 8, X0 = [40, 176, 302, 438], zTop = HU - 5;
+const base = () => { const leds = [], bars = []; for (const x of X0) { leds.push(...lineV(x, 456, zbar - 1.2, DOWN)); bars.push([x - 4, x + 4, 0, BH, zbar, zbar + 8]); } return { leds, bars, masks: [] }; };
+const at = (L, x, y) => L[Math.min(GY - 1, Math.floor(y / (BH / GY))) * GX + Math.min(GX - 1, Math.floor(x / (BW / GX)))];
+const r0 = simulate(base());
+const run = (name, boxes) => { const c = base(); c.bars.push(...boxes); const r = simulate(c); let w = 0; boxes.forEach(b => { const x = (b[0] + b[1]) / 2, y = (b[2] + b[3]) / 2; w = Math.min(w, (at(r.L, x, y) / at(r0.L, x, y) - 1) * 100); }); console.log(name.padEnd(58), `${(r.minmax * 100).toFixed(1)}% / ${(r.cv * 100).toFixed(1)}%  peggior buio locale ${w.toFixed(1)}%`); };
+const post = (x, y, d) => [x - d / 2, x + d / 2, y - d / 2, y + d / 2, zbar + 8, zTop];
+run('asta Ø4 sopra il listello (1 per listello)', X0.map(x => post(x, 235, 4)));
+run('lama 3 mm × 40 mm sopra il listello (1 per listello)', X0.map(x => [x - 1.5, x + 1.5, 215, 255, zbar + 8, zTop]));
+run('lama 3 mm × 470 mm su tutto il listello', X0.map(x => [x - 1.5, x + 1.5, 0, BH, zbar + 8, zTop]));
+run('asta Ø4 ai bordi (y=20) sopra il listello', X0.map(x => post(x, 20, 4)));
+run('asta Ø6 a 10 mm dal muro lungo, fuori dai listelli (x=100,380)', [100, 380].flatMap(x => [post(x, 8, 6), post(x, BH - 8, 6)]).map(b => [b[0], b[1], b[2], b[3], 0, zTop]));
